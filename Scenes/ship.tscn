@@ -6,6 +6,9 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ugvm7"]
 
+[sub_resource type="Theme" id="Theme_78pfh"]
+default_font_size = 100
+
 [node name="Ship" type="Node3D" unique_id=962295472]
 script = ExtResource("1_l3rv8")
 
@@ -16,6 +19,41 @@ mesh = SubResource("SphereMesh_ugvm7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1813683780]
 shape = SubResource("SphereShape3D_ugvm7")
+
+[node name="Loading" type="SubViewport" parent="." unique_id=1851969743]
+
+[node name="Control" type="Control" parent="Loading" unique_id=818359642]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Loading/Control" unique_id=2035764840]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12518838, 0.24896908, 0.19813567, 1)
+
+[node name="Label" type="Label" parent="Loading/Control" unique_id=243935970]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_top = -61.5
+offset_right = 214.5
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_78pfh")
+text = "LOADING"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1286162305]
 
