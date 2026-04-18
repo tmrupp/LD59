@@ -30,11 +30,8 @@ func capture() -> void:
 func render() -> void:
 	while true:
 		await (get_tree().create_timer(1.0 / fps).timeout)
-		print("t-1")
 		if buffer == null or buffer.size() < delay * fps:
-			print("t0")
 			continue
-		print("t1")
 			
 		var texture = ImageTexture.create_from_image(buffer.pop_front())
 			
