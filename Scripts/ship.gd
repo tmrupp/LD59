@@ -1,8 +1,8 @@
 extends Node3D
 
 @onready var views = $"../CanvasLayer/Control/ShipCameraViews"
-@onready var ship_view_scene = preload("res://scenes/ship_view.tscn")
-@onready var laser_scene = preload("res://scenes/laser.tscn")
+@onready var ship_view_scene = preload("res://Scenes/ship_view.tscn")
+@onready var laser_scene = preload("res://Scenes/laser.tscn")
 var view: TextureRect
 
 # Called when the node enters the scene tree for the first time.
