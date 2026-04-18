@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bapvuruc6k447"]
 
 [ext_resource type="PackedScene" uid="uid://de42481q0cwhl" path="res://scenes/ship.tscn" id="1_ugvm7"]
-[ext_resource type="Script" uid="uid://b5mmbiysvkkb" path="res://scripts/asteroid.gd" id="2_85xcm"]
+[ext_resource type="Script" uid="uid://dgyoiv2wukaxw" path="res://Scripts/asteroid.gd" id="2_85xcm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85xcm"]
 albedo_color = Color(0.38629052, 0.2949082, 0.08428394, 1)
@@ -10,6 +10,13 @@ albedo_color = Color(0.38629052, 0.2949082, 0.08428394, 1)
 material = SubResource("StandardMaterial3D_85xcm")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ugvm7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8alpp"]
+transparency = 1
+albedo_color = Color(0.0703, 0.37, 0.19018002, 0.33333334)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7m3ry"]
+material = SubResource("StandardMaterial3D_8alpp")
 
 [node name="Main" type="Node3D" unique_id=1987251493]
 
@@ -45,13 +52,37 @@ grow_vertical = 0
 transform = Transform3D(0.7273896, 0, 0.6862247, 0, 1, 0, -0.6862247, 0, 0.7273896, 1.8856115, 0, -2.1898193)
 
 [node name="Asteroid" type="Node3D" parent="." unique_id=924411034]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7240872, -3.4443474)
+transform = Transform3D(-4.371139e-08, -1, 0, -4.371139e-08, 1.9106855e-15, 1, -1, 4.371139e-08, -4.371139e-08, 0, 0.19755888, -3.4443474)
 script = ExtResource("2_85xcm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Asteroid" unique_id=2040605125]
 mesh = SubResource("SphereMesh_joe6r")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Asteroid" unique_id=537684635]
+[node name="StaticBody3D" type="StaticBody3D" parent="Asteroid" unique_id=537684635 groups=["obstacle"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Asteroid/StaticBody3D" unique_id=917254217]
+shape = SubResource("SphereShape3D_ugvm7")
+
+[node name="Asteroid2" type="Node3D" parent="." unique_id=1981599724]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5151107, 0.19755888, -3.609644)
+script = ExtResource("2_85xcm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Asteroid2" unique_id=1984613818]
+mesh = SubResource("SphereMesh_joe6r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Asteroid2" unique_id=26043348 groups=["obstacle"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Asteroid2/StaticBody3D" unique_id=1773992455]
+shape = SubResource("SphereShape3D_ugvm7")
+
+[node name="Goal" type="Node3D" parent="." unique_id=791758862]
+transform = Transform3D(6.585, 0, 0, 0, 6.585, 0, 0, 0, 6.585, -0.42079735, 0, -10.247673)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Goal" unique_id=632127229]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+mesh = SubResource("SphereMesh_7m3ry")
+
+[node name="Area3D" type="Area3D" parent="Goal" unique_id=399263299 groups=["goal"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal/Area3D" unique_id=1790455981]
 shape = SubResource("SphereShape3D_ugvm7")

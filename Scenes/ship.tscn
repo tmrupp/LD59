@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://de42481q0cwhl"]
 
-[ext_resource type="Script" uid="uid://oxqhqjikch46" path="res://scripts/ship.gd" id="1_l3rv8"]
+[ext_resource type="Script" uid="uid://62buldcvlc2u" path="res://Scripts/ship.gd" id="1_l3rv8"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ugvm7"]
 
@@ -12,9 +12,9 @@ script = ExtResource("1_l3rv8")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=836166506]
 mesh = SubResource("SphereMesh_ugvm7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=417491629]
+[node name="Area3D" type="Area3D" parent="." unique_id=417491629]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1813683780]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1813683780]
 shape = SubResource("SphereShape3D_ugvm7")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1286162305]
@@ -25,3 +25,6 @@ shape = SubResource("SphereShape3D_ugvm7")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=409095934]
 remote_path = NodePath("../SubViewport/Node3D")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

@@ -11,7 +11,6 @@ func _ready() -> void:
 	view = ship_view_scene.instantiate()
 	view.add_to_group("ship_view")
 	views.add_child(view)
-
 	capture()
 	render()
 
@@ -47,6 +46,16 @@ func _input(event: InputEvent) -> void:
 				turn(Vector3.UP)
 			KEY_D:
 				turn(Vector3.DOWN)
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("obstacle"):
+		print("Collided with obstacle:", body.get_parent().name)
+		queue_free()
+
+func _on_area_entered(area: Area3D) -> void:
+	if area.is_in_group("goal"):
+		print("Reached goal area:", area.get_parent().name)
+		queue_free()
 
 
 func _process(delta: float) -> void:

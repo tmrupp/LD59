@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var velocity: Vector3 = Vector3.DOWN
+@export var velocity = 1.0
 
 func change_color ():
 	await (get_tree().create_timer(2).timeout)
@@ -20,5 +20,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position += delta*velocity
+	position += -transform.basis.z * velocity * delta
 	pass
