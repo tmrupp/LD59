@@ -46,6 +46,11 @@ func _input(event: InputEvent) -> void:
 				turn(Vector3.UP)
 			KEY_D:
 				turn(Vector3.DOWN)
+			KEY_SPACE:
+				shoot()
+
+func shoot():
+	print("shooting!")
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("obstacle"):
@@ -64,4 +69,3 @@ func _process(delta: float) -> void:
 # v should be Vector3.UP, DOWN, LEFT, RIGHT
 func turn(v: Vector3):
 	rotate_object_local(v, deg_to_rad(45))
-	print("turing")
