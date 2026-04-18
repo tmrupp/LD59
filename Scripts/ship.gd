@@ -2,11 +2,15 @@ extends Node3D
 
 @onready var views = $"../CanvasLayer/Control/ShipCameraViews"
 @onready var ship_view_scene = preload("res://scenes/ship_view.tscn")
+@onready var laser_scene = preload("res://scenes/laser.tscn")
 var view: TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SubViewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+
+	$Area3D.body_entered.connect(_on_body_entered)
+	$Area3D.area_entered.connect(_on_area_entered)
 
 	view = ship_view_scene.instantiate()
 	view.add_to_group("ship_view")
@@ -51,6 +55,10 @@ func _input(event: InputEvent) -> void:
 
 func shoot():
 	print("shooting!")
+	var laser = laser_scene.instantiate()
+	laser.global_transform = global_transform
+	get_tree().root.get_child(0).add_child(laser)
+	laser.setup(self)
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("obstacle"):
