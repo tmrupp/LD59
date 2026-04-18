@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://1am24ksd5n6m"]
-
-[node name="ShipView" type="TextureRect" unique_id=1698580206]
-offset_left = 4.0
-offset_right = 104.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 2
