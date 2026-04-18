@@ -21,6 +21,13 @@ var button_2 = clear_asteroids
 @export_group("Ship Spawn")
 @export var ship_spawn_center : Vector3
 @export var ship_spawn_extents : Vector3
+@export var ship_spawn_cooldown : float
+
+@export_tool_button("Spawn Ship")
+var button_3 = spawn_ship
+
+@export_tool_button("Clear Ships")
+var button_4 = clear_ships
 @export_group("")
 # ====================================
 
@@ -64,12 +71,23 @@ func init_asteroids():
 				new_asteroid.scale *= randfn(4, 2)
 
 func spawn_ship():
-	pass
+	var new_ship = ship_prefab.instantiate()
+	add_child(new_ship)
+	ships.append(new_ship)
+
+	new_ship.position = ship_spawn_center + Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)) * ship_spawn_extents / 2.0
 
 func clear_asteroids():
 	print("Clearing asteroids")
 	for asteroid in asteroids:
 		asteroid.queue_free()
+	asteroids.clear()
+
+func clear_ships():
+	print("Clearing ships")
+	for ship in ships:
+		ship.queue_free()
+	ships.clear()
 
 func get_random_on_unit_sphere():
 	return Vector3(randfn(0, 1), randfn(0, 1), randfn(0, 1)).normalized()
