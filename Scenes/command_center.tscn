@@ -1,16 +1,33 @@
 [gd_scene format=3 uid="uid://b3idugcar0g2u"]
 
+[ext_resource type="Shader" uid="uid://c44coabjath5c" path="res://Resources/space_sky.gdshader" id="1_h4dh8"]
 [ext_resource type="PackedScene" uid="uid://c1yeog1s0i3oc" path="res://3D Models/ControlCenter.glb" id="1_lv533"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8dmo1"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h4dh8"]
+noise_type = 2
+frequency = 0.27
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kesst"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_h4dh8")
+seamless = true
+invert = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kesst"]
+shader = ExtResource("1_h4dh8")
+shader_parameter/noise_weight = 0.735
+shader_parameter/noise_bias = 0.42
+shader_parameter/noise_frequency = 4.385
+shader_parameter/star_light_texture = SubResource("NoiseTexture2D_kesst")
+shader_parameter/star_density = 16.0
 
 [sub_resource type="Sky" id="Sky_t0o22"]
-sky_material = SubResource("ProceduralSkyMaterial_8dmo1")
+sky_material = SubResource("ShaderMaterial_kesst")
 
 [sub_resource type="Environment" id="Environment_jcws5"]
-background_mode = 1
+background_mode = 2
 sky = SubResource("Sky_t0o22")
 ambient_light_source = 2
 ambient_light_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
