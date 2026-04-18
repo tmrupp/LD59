@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://byf4gtgbma2dq"]
 
-[ext_resource type="Texture2D" uid="uid://bugcwwnuakrhl" path="res://Resources/title card.png" id="1_ralnt"]
+[ext_resource type="Texture2D" uid="uid://c3tpbvo0vnbmf" path="res://Resources/titlecard2.png" id="1_ralnt"]
+[ext_resource type="Texture2D" uid="uid://bhh1xtvtwv6dy" path="res://Resources/star.png" id="2_prpw8"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=1701491321]
 anchors_preset = 15
@@ -26,22 +27,60 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=244297078]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1352469008]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=433803354]
 layout_mode = 2
-text = "Title"
 
-[node name="start button" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=817321289]
+[node name="star" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2136580416]
 layout_mode = 2
+texture = ExtResource("2_prpw8")
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1352469008]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "ROIDS"
+
+[node name="star2" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=959318980]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_prpw8")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=846503731]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=980961372]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="menu" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=774972264]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="start button" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/menu" unique_id=817321289]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
 text = "start"
 
-[node name="options" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=138219338]
+[node name="options" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/menu" unique_id=138219338]
 layout_mode = 2
+theme_override_font_sizes/font_size = 75
 text = "options"
 
-[node name="exit" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=993683695]
+[node name="exit" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/menu" unique_id=993683695]
 layout_mode = 2
+theme_override_font_sizes/font_size = 75
 text = "exit"
 
-[node name="volume" type="Label" parent="HBoxContainer" unique_id=763236036]
+[node name="spacer" type="CenterContainer" parent="HBoxContainer" unique_id=1722007814]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1896240689]
+layout_mode = 2
+
+[node name="volume" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=763236036]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
 text = "volume"
