@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://de42481q0cwhl" path="res://scenes/ship.tscn" id="1_ugvm7"]
 [ext_resource type="Script" uid="uid://dgyoiv2wukaxw" path="res://Scripts/asteroid.gd" id="2_85xcm"]
+[ext_resource type="Script" uid="uid://bcypj81eiclcr" path="res://Scripts/laser.gd" id="3_7m3ry"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85xcm"]
 albedo_color = Color(0.38629052, 0.2949082, 0.08428394, 1)
@@ -17,6 +18,17 @@ albedo_color = Color(0.0703, 0.37, 0.19018002, 0.33333334)
 
 [sub_resource type="SphereMesh" id="SphereMesh_7m3ry"]
 material = SubResource("StandardMaterial3D_8alpp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvnnc"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.34509805)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c4141"]
+material = SubResource("StandardMaterial3D_jvnnc")
+radius = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ek7iq"]
+radius = 0.1
 
 [node name="Main" type="Node3D" unique_id=1987251493]
 
@@ -86,3 +98,15 @@ mesh = SubResource("SphereMesh_7m3ry")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal/Area3D" unique_id=1790455981]
 shape = SubResource("SphereShape3D_ugvm7")
+
+[node name="Laser" type="Node3D" parent="." unique_id=951568133]
+script = ExtResource("3_7m3ry")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Laser" unique_id=341635596]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_c4141")
+
+[node name="Area3D" type="Area3D" parent="Laser" unique_id=1654634064 groups=["goal"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Laser/Area3D" unique_id=1174715515]
+shape = SubResource("CapsuleShape3D_ek7iq")
