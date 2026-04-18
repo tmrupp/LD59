@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0otna6ujbk57"]
 
 [ext_resource type="Script" uid="uid://dgyoiv2wukaxw" path="res://Scripts/asteroid.gd" id="1_akfqu"]
+[ext_resource type="PackedScene" uid="uid://pybmjg3w1c7y" path="res://3D Models/Asteroid1.glb" id="2_a2bka"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85xcm"]
 albedo_color = Color(0.38629052, 0.2949082, 0.08428394, 1)
@@ -13,7 +14,11 @@ material = SubResource("StandardMaterial3D_85xcm")
 [node name="Asteroid" type="Node3D" unique_id=129984092]
 script = ExtResource("1_akfqu")
 
+[node name="Asteroid1" parent="." unique_id=1722478174 instance=ExtResource("2_a2bka")]
+transform = Transform3D(0.31, 0, 0, 0, 0.31, 0, 0, 0, 0.31, 0, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=99898225]
+visible = false
 mesh = SubResource("SphereMesh_joe6r")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=454952765 groups=["obstacles"]]
