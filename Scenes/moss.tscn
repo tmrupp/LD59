@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c3tpbvo0vnbmf" path="res://Resources/titlecard2.png" id="1_ralnt"]
 [ext_resource type="Texture2D" uid="uid://bhh1xtvtwv6dy" path="res://Resources/star.png" id="2_prpw8"]
+[ext_resource type="Texture2D" uid="uid://faxpud5d3dpy" path="res://Resources/box1.png" id="3_kn6wq"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=1701491321]
 anchors_preset = 15
@@ -52,23 +53,32 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
-[node name="menu" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=774972264]
+[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=524974763]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer2/CenterContainer2" unique_id=722076654]
+layout_mode = 2
+texture = ExtResource("3_kn6wq")
+
+[node name="menu" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2/CenterContainer2" unique_id=774972264]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="start button" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/menu" unique_id=817321289]
+[node name="start button" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/CenterContainer2/menu" unique_id=817321289]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "start"
 
-[node name="options" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/menu" unique_id=138219338]
+[node name="options" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/CenterContainer2/menu" unique_id=138219338]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "options"
 
-[node name="exit" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/menu" unique_id=993683695]
+[node name="exit" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/CenterContainer2/menu" unique_id=993683695]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "exit"
