@@ -34,9 +34,20 @@ var button_4 = clear_ships
 var asteroids : Array = []
 var ships : Array = []
 
+var ship_spawn_timer : float
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		init_asteroids()
+		ship_spawn_timer = 0.0
+
+func _process(delta: float) -> void:
+	if not Engine.is_editor_hint():
+		ship_spawn_timer += delta
+
+		if ship_spawn_timer >= ship_spawn_cooldown:
+			spawn_ship()
+			ship_spawn_timer = 0.0
 
 func init_asteroids():
 	# approximately how many asteroids in each dimensions to distribute them in a 3d grid
@@ -69,6 +80,11 @@ func init_asteroids():
 
 				# set scale
 				new_asteroid.scale *= randfn(4, 2)
+
+				# randomly set rotational velocity
+				var rot_axis = get_random_on_unit_sphere()
+				new_asteroid.rotational_axis = rot_axis
+				new_asteroid.rotational_velocity = randfn(0, 0.01)
 
 func spawn_ship():
 	var new_ship = ship_prefab.instantiate()

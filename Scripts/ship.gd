@@ -93,7 +93,7 @@ func _on_area_entered(area: Area3D) -> void:
 
 func _process(delta: float) -> void:
 	position += -transform.basis.z * velocity * delta
-	print("position=", position)
+	#print("position=", position)
 
 # v should be Vector3.UP, DOWN, LEFT, RIGHT
 func turn(v: Vector3):
