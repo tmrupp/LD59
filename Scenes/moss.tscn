@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://byf4gtgbma2dq"]
 
+[ext_resource type="Texture2D" uid="uid://bugcwwnuakrhl" path="res://Resources/title card.png" id="1_ralnt"]
+
 [node name="MarginContainer" type="MarginContainer" unique_id=1701491321]
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,22 +13,35 @@ theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 80
 
-[node name="start button" type="Label" parent="." unique_id=817321289]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2140267519]
+layout_mode = 2
+
+[node name="splash image" type="TextureRect" parent="CenterContainer" unique_id=37746934]
+layout_mode = 2
+texture = ExtResource("1_ralnt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1146131387]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=244297078]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1352469008]
+layout_mode = 2
+text = "Title"
+
+[node name="start button" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=817321289]
 layout_mode = 2
 text = "start"
 
-[node name="options" type="Label" parent="." unique_id=138219338]
+[node name="options" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=138219338]
 layout_mode = 2
 text = "options"
 
-[node name="exit" type="Label" parent="." unique_id=993683695]
+[node name="exit" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=993683695]
 layout_mode = 2
 text = "exit"
 
-[node name="volume" type="Label" parent="." unique_id=763236036]
+[node name="volume" type="Label" parent="HBoxContainer" unique_id=763236036]
 layout_mode = 2
 text = "volume"
-
-[node name="Title" type="Label" parent="." unique_id=1352469008]
-layout_mode = 2
-text = "Title"
