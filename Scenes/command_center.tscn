@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://c44coabjath5c" path="res://Resources/space_sky.gdshader" id="1_h4dh8"]
 [ext_resource type="PackedScene" uid="uid://dx8xtp808al5q" path="res://3D Models/ControlCenter.glb" id="1_lv533"]
 [ext_resource type="Script" uid="uid://daftteavwxk0y" path="res://Scripts/camera_look.gd" id="2_kesst"]
-[ext_resource type="Script" uid="uid://k22dnw2707cg" path="res://Scripts/director.gd" id="4_dnagy"]
+[ext_resource type="Script" path="res://Scripts/director.gd" id="4_dnagy"]
 [ext_resource type="PackedScene" uid="uid://de42481q0cwhl" path="res://Scenes/ship.tscn" id="4_escgk"]
 [ext_resource type="PackedScene" uid="uid://c0otna6ujbk57" path="res://Scenes/asteroid.tscn" id="5_yrvai"]
 
@@ -61,7 +61,7 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 17.553)
 mesh = SubResource("PlaneMesh_yl3n7")
 
 [node name="Ceiling" type="MeshInstance3D" parent="." unique_id=892390823]
-transform = Transform3D(20, 0, 0, 0, -20, 1.7484556e-06, 0, -1.7484556e-06, -20, 0, 4.5, 17.553)
+transform = Transform3D(20, 0, 0, 0, -20, 1.7484556e-06, 0, -1.7484556e-06, -20, -0.00041675568, 4.5042963, 17.55093)
 mesh = SubResource("PlaneMesh_yl3n7")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1300415891]
