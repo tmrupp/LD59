@@ -1,15 +1,7 @@
 [gd_scene format=3 uid="uid://bapvuruc6k447"]
 
 [ext_resource type="PackedScene" uid="uid://de42481q0cwhl" path="res://ship.tscn" id="1_ugvm7"]
-[ext_resource type="Script" uid="uid://b5mmbiysvkkb" path="res://asteroid.gd" id="2_85xcm"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85xcm"]
-albedo_color = Color(0.38629052, 0.2949082, 0.08428394, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_joe6r"]
-material = SubResource("StandardMaterial3D_85xcm")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ugvm7"]
+[ext_resource type="PackedScene" uid="uid://bn1i5loaemqsd" path="res://Scenes/asteroid.tscn" id="2_85xcm"]
 
 [node name="Main" type="Node3D" unique_id=1987251493]
 
@@ -44,14 +36,5 @@ grow_vertical = 0
 [node name="Ship2" parent="." unique_id=669010389 instance=ExtResource("1_ugvm7")]
 transform = Transform3D(0.7273896, 0, 0.6862247, 0, 1, 0, -0.6862247, 0, 0.7273896, 1.8856115, 0, -2.1898193)
 
-[node name="Asteroid" type="Node3D" parent="." unique_id=924411034]
+[node name="Asteroid" parent="." unique_id=129984092 instance=ExtResource("2_85xcm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7240872, -3.4443474)
-script = ExtResource("2_85xcm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Asteroid" unique_id=2040605125]
-mesh = SubResource("SphereMesh_joe6r")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Asteroid" unique_id=537684635]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Asteroid/StaticBody3D" unique_id=917254217]
-shape = SubResource("SphereShape3D_ugvm7")
