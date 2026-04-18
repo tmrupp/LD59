@@ -1,9 +1,11 @@
 extends Node3D
 
-@onready var views = $"../CanvasLayer/Control/ShipCameraViews"
-@onready var ship_view_scene = preload("res://Scenes/ship_view.tscn")
 @onready var laser_scene = preload("res://Scenes/laser.tscn")
-var view: TextureRect
+@onready var loading_font = preload("res://Resources/Anta-Regular.ttf")
+@onready var loading_viewport = $Loading
+
+var screen: MeshInstance3D
+var screen_material: ShaderMaterial
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,9 +14,18 @@ func _ready() -> void:
 	$Area3D.body_entered.connect(_on_body_entered)
 	$Area3D.area_entered.connect(_on_area_entered)
 
-	view = ship_view_scene.instantiate()
-	view.add_to_group("ship_view")
-	views.add_child(view)
+	screen = get_node_or_null("../ControlCenter/Screen1") as MeshInstance3D
+	if screen == null:
+		push_warning("Ship screen mesh not found at ../ControlCenter/Screen1")
+		return
+	
+	var shader = preload("res://Resources/screen_shader.gdshader")
+	screen_material = ShaderMaterial.new()
+	screen_material.shader = shader
+	screen_material.set_shader_parameter("display_texture", loading_viewport.get_texture())
+
+	screen.set_surface_override_material(0, screen_material)
+
 	capture()
 	render()
 
@@ -25,6 +36,7 @@ func _ready() -> void:
 #var direction: Vector3 = Vector3.FORWARD
 
 var buffer = []
+
 func capture() -> void:
 	while true:
 		await (get_tree().create_timer(1.0 / fps).timeout)
@@ -36,8 +48,16 @@ func render() -> void:
 		await (get_tree().create_timer(1.0 / fps).timeout)
 		if buffer == null or buffer.size() < delay * fps:
 			continue
-			
-		view.texture = ImageTexture.create_from_image(buffer.pop_front())
+
+		if screen_material == null:
+			continue
+
+		if loading_viewport != null:
+			loading_viewport.queue_free()
+			loading_viewport = null
+
+		var delayed_texture := ImageTexture.create_from_image(buffer.pop_front())
+		screen_material.set_shader_parameter("display_texture", delayed_texture)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
@@ -73,6 +93,7 @@ func _on_area_entered(area: Area3D) -> void:
 
 func _process(delta: float) -> void:
 	position += -transform.basis.z * velocity * delta
+	print("position=", position)
 
 # v should be Vector3.UP, DOWN, LEFT, RIGHT
 func turn(v: Vector3):
