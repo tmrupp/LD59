@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://de42481q0cwhl"]
 
 [ext_resource type="Script" uid="uid://62buldcvlc2u" path="res://Scripts/ship.gd" id="1_l3rv8"]
+[ext_resource type="PackedScene" uid="uid://dkg0c5dgi60gu" path="res://3D Models/spaceship.glb" id="2_4qyt1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ugvm7"]
 
@@ -12,7 +13,11 @@ default_font_size = 100
 [node name="Ship" type="Node3D" unique_id=962295472]
 script = ExtResource("1_l3rv8")
 
+[node name="spaceship" parent="." unique_id=555634741 instance=ExtResource("2_4qyt1")]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 0, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=836166506]
+visible = false
 mesh = SubResource("SphereMesh_ugvm7")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=417491629]
@@ -60,6 +65,7 @@ text = "LOADING"
 [node name="Node3D" type="Node3D" parent="SubViewport" unique_id=1322803623]
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D" unique_id=347077965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.73)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=409095934]
 remote_path = NodePath("../SubViewport/Node3D")
