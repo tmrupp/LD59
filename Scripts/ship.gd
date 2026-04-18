@@ -74,7 +74,6 @@ func _input(event: InputEvent) -> void:
 				shoot()
 
 func shoot():
-	print("shooting!")
 	var laser = laser_scene.instantiate()
 	laser.global_transform = global_transform
 	get_tree().root.get_child(0).add_child(laser)
@@ -93,7 +92,6 @@ func _on_area_entered(area: Area3D) -> void:
 
 func _process(delta: float) -> void:
 	position += -transform.basis.z * velocity * delta
-	#print("position=", position)
 
 # v should be Vector3.UP, DOWN, LEFT, RIGHT
 func turn(v: Vector3):
