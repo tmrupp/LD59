@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://de42481q0cwhl"]
+
+[ext_resource type="Script" uid="uid://oxqhqjikch46" path="res://ship.gd" id="1_l3rv8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ugvm7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ugvm7"]
+
+[node name="Ship" type="Node3D" unique_id=962295472]
+script = ExtResource("1_l3rv8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=836166506]
+mesh = SubResource("SphereMesh_ugvm7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=417491629]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1813683780]
+shape = SubResource("SphereShape3D_ugvm7")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1286162305]
+
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=1322803623]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D" unique_id=347077965]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=409095934]
+remote_path = NodePath("../SubViewport/Node3D")

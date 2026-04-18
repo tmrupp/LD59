@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bapvuruc6k447"]
+
+[ext_resource type="PackedScene" uid="uid://de42481q0cwhl" path="res://ship.tscn" id="1_ugvm7"]
+[ext_resource type="Script" uid="uid://b5mmbiysvkkb" path="res://asteroid.gd" id="2_85xcm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85xcm"]
+albedo_color = Color(0.38629052, 0.2949082, 0.08428394, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_joe6r"]
+material = SubResource("StandardMaterial3D_85xcm")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ugvm7"]
+
+[node name="Main" type="Node3D" unique_id=1987251493]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1058641915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.857366, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1526679373]
+transform = Transform3D(1, 0, 0, 0, 0.81214464, 0.5834562, 0, -0.5834562, 0.81214464, 0, 1.6563046, 1.6920109)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=720546347]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=310554141]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShipCameraViews" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1744754949]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Ship" parent="." unique_id=962295472 instance=ExtResource("1_ugvm7")]
+
+[node name="Ship2" parent="." unique_id=669010389 instance=ExtResource("1_ugvm7")]
+transform = Transform3D(0.7273896, 0, 0.6862247, 0, 1, 0, -0.6862247, 0, 0.7273896, 1.8856115, 0, -2.1898193)
+
+[node name="Asteroid" type="Node3D" parent="." unique_id=924411034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7240872, -3.4443474)
+script = ExtResource("2_85xcm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Asteroid" unique_id=2040605125]
+mesh = SubResource("SphereMesh_joe6r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Asteroid" unique_id=537684635]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Asteroid/StaticBody3D" unique_id=917254217]
+shape = SubResource("SphereShape3D_ugvm7")
