@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://crab0h8jo2vs3"]
+
+[ext_resource type="Shader" uid="uid://p8dbkv2vphyj" path="res://Resources/refract.gdshader" id="1_nubyr"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nubyr")
+shader_parameter/offset = -0.003
+shader_parameter/mix_color = Color(0.33333334, 0.5294118, 1, 0.18039216)

@@ -4,7 +4,7 @@ extends Node3D
 @onready var loading_font = preload("res://Resources/Anta-Regular.ttf")
 @onready var loading_viewport = $Loading
 
-var screen: MeshInstance3D
+# var screen: MeshInstance3D
 var screen_material: ShaderMaterial
 
 # Called when the node enters the scene tree for the first time.
@@ -14,17 +14,17 @@ func _ready() -> void:
 	$Area3D.body_entered.connect(_on_body_entered)
 	$Area3D.area_entered.connect(_on_area_entered)
 
-	screen = get_node_or_null("../ControlCenter/Screen1") as MeshInstance3D
-	if screen == null:
-		push_warning("Ship screen mesh not found at ../ControlCenter/Screen1")
-		return
+	# screen = get_node_or_null("../ControlCenter/Screen1") as MeshInstance3D
+	# if screen == null:
+	# 	push_warning("Ship screen mesh not found at ../ControlCenter/Screen1")
+	# 	return
 	
 	var shader = preload("res://Resources/screen_shader.gdshader")
 	screen_material = ShaderMaterial.new()
 	screen_material.shader = shader
 	screen_material.set_shader_parameter("display_texture", loading_viewport.get_texture())
 
-	screen.set_surface_override_material(0, screen_material)
+	#screen.set_surface_override_material(0, screen_material)
 
 	capture()
 	render()

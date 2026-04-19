@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0otna6ujbk57"]
 
 [ext_resource type="Script" uid="uid://dgyoiv2wukaxw" path="res://Scripts/asteroid.gd" id="1_akfqu"]
-[ext_resource type="PackedScene" uid="uid://pybmjg3w1c7y" path="res://3D Models/Asteroid1.glb" id="2_a2bka"]
+[ext_resource type="PackedScene" uid="uid://c8mjbw5sgowr0" path="res://3D Models/Asteroid1.glb" id="2_a2bka"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85xcm"]
 albedo_color = Color(0.38629052, 0.2949082, 0.08428394, 1)
@@ -21,7 +21,7 @@ transform = Transform3D(0.31, 0, 0, 0, 0.31, 0, 0, 0, 0.31, 0, 0, 0)
 visible = false
 mesh = SubResource("SphereMesh_joe6r")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=454952765 groups=["obstacles"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=454952765 groups=["obstacle"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=547758994]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=547758994 groups=["obstacle"]]
 shape = SubResource("SphereShape3D_ugvm7")
