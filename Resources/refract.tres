@@ -5,5 +5,5 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_nubyr")
-shader_parameter/offset = -0.005
+shader_parameter/offset = -0.003
 shader_parameter/mix_color = Color(0.33333334, 0.5294118, 1, 0.18039216)

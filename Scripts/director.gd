@@ -22,6 +22,7 @@ var button_2 = clear_asteroids
 @export var ship_spawn_center : Vector3
 @export var ship_spawn_extents : Vector3
 @export var ship_spawn_cooldown : float
+@export var ship_spawn_max : int
 
 @export_tool_button("Spawn Ship")
 var button_3 = spawn_ship
@@ -36,6 +37,8 @@ var ships : Array = []
 
 var ship_spawn_timer : float
 
+var cached_ship_count : int = -1
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		init_asteroids()
@@ -46,8 +49,13 @@ func _process(delta: float) -> void:
 		ship_spawn_timer += delta
 
 		if ship_spawn_timer >= ship_spawn_cooldown:
-			spawn_ship()
+			if len(ships) < ship_spawn_max:
+				spawn_ship()
 			ship_spawn_timer = 0.0
+	
+	if len(ships) != cached_ship_count:
+		cached_ship_count = len(ships)
+		print("we now have ", cached_ship_count, " ships")
 
 func init_asteroids():
 	# approximately how many asteroids in each dimensions to distribute them in a 3d grid
