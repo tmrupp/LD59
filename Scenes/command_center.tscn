@@ -8,8 +8,6 @@
 [ext_resource type="Material" uid="uid://crab0h8jo2vs3" path="res://Resources/refract.tres" id="4_a3bg2"]
 [ext_resource type="Script" uid="uid://k22dnw2707cg" path="res://Scripts/director.gd" id="4_dnagy"]
 [ext_resource type="Material" uid="uid://dmee5abgg5t5h" path="res://Resources/tv_static.tres" id="5_escgk"]
-[ext_resource type="PackedScene" uid="uid://de42481q0cwhl" path="res://Scenes/ship.tscn" id="9_5ygjn"]
-[ext_resource type="PackedScene" uid="uid://c0otna6ujbk57" path="res://Scenes/asteroid.tscn" id="10_82014"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h4dh8"]
 noise_type = 2
@@ -143,12 +141,6 @@ ship_spawn_center = Vector3(0, 30, -130)
 ship_spawn_extents = Vector3(100, 20, 0)
 ship_spawn_cooldown = 10.0
 ship_spawn_max = 3
-
-[node name="Ship" parent="." unique_id=962295472 instance=ExtResource("9_5ygjn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 50, 205)
-
-[node name="Asteroid" parent="." unique_id=129984092 instance=ExtResource("10_82014")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 50, 200)
 
 [editable path="Controls/ControlCenter"]
 [editable path="Controls/ControlCenter2"]
