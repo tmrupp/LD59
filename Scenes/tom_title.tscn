@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://ciurxjtokvv5l"]
+
+[ext_resource type="Texture2D" uid="uid://c3tpbvo0vnbmf" path="res://Resources/titlecard2.png" id="1_ispaa"]
+[ext_resource type="Texture2D" uid="uid://bhh1xtvtwv6dy" path="res://Resources/star.png" id="2_bom4k"]
+[ext_resource type="Texture2D" uid="uid://faxpud5d3dpy" path="res://Resources/box1.png" id="3_csl5r"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1687573044]
+
+[node name="Control" type="Control" parent="." unique_id=1270044155]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=2107106499]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ispaa")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1388126872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=1864821398]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=785150136]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer" unique_id=195975244]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1491822319]
+layout_mode = 2
+texture = ExtResource("2_bom4k")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=485648598]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 46
+text = "ROIDS"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1105968095]
+layout_mode = 2
+texture = ExtResource("2_bom4k")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/VBoxContainer" unique_id=688806574]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_csl5r")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect" unique_id=1158253108]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer" unique_id=1658165797]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=235274134]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Start"
+
+[node name="Button2" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=516056143]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Options"
+
+[node name="Button3" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=613281589]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exit
+"
+
+[node name="Spacer" type="Control" parent="Control/MarginContainer/HBoxContainer" unique_id=571812321]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=58247655]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1903966962]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=559279900]
+layout_mode = 2
