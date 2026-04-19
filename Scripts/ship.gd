@@ -7,6 +7,8 @@ extends Node3D
 # var screen: MeshInstance3D
 var screen_material: ShaderMaterial
 
+var ship_name : String
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SubViewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
@@ -25,6 +27,9 @@ func _ready() -> void:
 	screen_material.set_shader_parameter("display_texture", loading_viewport.get_texture())
 
 	#screen.set_surface_override_material(0, screen_material)
+
+	# randomly generate name of the form XX-000
+	ship_name = char(randi_range(65, 90)) + char(randi_range(65, 90)) + "-" + str(randi_range(0, 9)) + str(randi_range(0, 9)) + str(randi_range(0, 9))
 
 	capture()
 	render()
