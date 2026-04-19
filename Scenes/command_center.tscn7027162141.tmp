@@ -49,15 +49,6 @@ size = Vector3(0.32, 0.085, 0.17)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yrvai"]
 size = Vector3(0.19556762, 0.085, 0.19343995)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5ygjn"]
-size = Vector3(0.19556762, 0.085, 0.19343995)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_82014"]
-size = Vector3(0.19556762, 0.085, 0.19343995)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jruwr"]
-size = Vector3(0.19556762, 0.085, 0.19343995)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_escgk"]
 size = Vector3(0.32, 0.085, 0.17)
 
@@ -71,7 +62,6 @@ environment = SubResource("Environment_jcws5")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=27187011]
 stream = ExtResource("2_escgk")
-volume_db = -10.0
 autoplay = true
 
 [node name="Player" type="Node3D" parent="." unique_id=1165334094]
@@ -107,35 +97,29 @@ shape = SubResource("BoxShape3D_0rffn")
 transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 0.5482091, 1.0628211, -0.036422424)
 surface_material_override/0 = ExtResource("4_a3bg2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_001" parent_id_path=PackedInt32Array(1351323934, 1862642113) index="0" unique_id=2115557537]
+[node name="StaticBody3D2" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_001" parent_id_path=PackedInt32Array(1351323934, 1862642113) index="0" unique_id=2115557537]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_001/StaticBody3D" unique_id=1740107841]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_001/StaticBody3D2" unique_id=1740107841]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
 shape = SubResource("BoxShape3D_yrvai")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_003" parent_id_path=PackedInt32Array(1351323934, 705715082) index="0" unique_id=1045038324]
+[node name="StaticBody3D2" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_003" parent_id_path=PackedInt32Array(1351323934, 705715082) index="0" unique_id=243204185]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_003/StaticBody3D" unique_id=244044792]
+[node name="CollisionShape3D" parent="Controls/ControlCenter/Buttons_003/StaticBody3D2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
-shape = SubResource("BoxShape3D_5ygjn")
+shape = SubResource("BoxShape3D_yrvai")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_004" parent_id_path=PackedInt32Array(1351323934, 614293461) index="0" unique_id=312242669]
+[node name="StaticBody3D2" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_005" parent_id_path=PackedInt32Array(1351323934, 2070192886) index="0" unique_id=1068378064]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_004/StaticBody3D" unique_id=569728171]
+[node name="CollisionShape3D" parent="Controls/ControlCenter/Buttons_005/StaticBody3D2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
-shape = SubResource("BoxShape3D_5ygjn")
+shape = SubResource("BoxShape3D_yrvai")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_005" parent_id_path=PackedInt32Array(1351323934, 2070192886) index="0" unique_id=732727228]
+[node name="StaticBody3D2" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_007" parent_id_path=PackedInt32Array(1351323934, 139768728) index="0" unique_id=1026663225]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_005/StaticBody3D" unique_id=1560413658]
+[node name="CollisionShape3D" parent="Controls/ControlCenter/Buttons_007/StaticBody3D2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
-shape = SubResource("BoxShape3D_82014")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_007" parent_id_path=PackedInt32Array(1351323934, 139768728) index="0" unique_id=1495993151]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_007/StaticBody3D" unique_id=1961399146]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
-shape = SubResource("BoxShape3D_jruwr")
+shape = SubResource("BoxShape3D_yrvai")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Switching Ships Button_001" parent_id_path=PackedInt32Array(1351323934, 169297424) index="0" unique_id=786466515]
 

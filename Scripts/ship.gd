@@ -38,9 +38,11 @@ func _ready() -> void:
 @export var fps = 15
 
 @export var velocity = 1.0
-#var direction: Vector3 = Vector3.FORWARD
+@export var turn_amount_degrees := 45.0
+@export var turn_duration := 0.25
 
 var buffer = []
+var turn_tween: Tween
 
 func capture() -> void:
 	while true:
@@ -68,13 +70,13 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
 			KEY_W:
-				turn(Vector3.RIGHT)
-			KEY_S:
-				turn(Vector3.LEFT)
-			KEY_A:
 				turn(Vector3.UP)
-			KEY_D:
+			KEY_S:
 				turn(Vector3.DOWN)
+			KEY_A:
+				turn(Vector3.LEFT)
+			KEY_D:
+				turn(Vector3.RIGHT)
 			KEY_SPACE:
 				shoot()
 
@@ -98,6 +100,19 @@ func _on_area_entered(area: Area3D) -> void:
 func _process(delta: float) -> void:
 	position += -transform.basis.z * velocity * delta
 
-# v should be Vector3.UP, DOWN, LEFT, RIGHT
 func turn(v: Vector3):
-	rotate_object_local(v, deg_to_rad(45))
+	if turn_tween != null and turn_tween.is_valid():
+		turn_tween.kill()
+
+	var current_basis := transform.basis.orthonormalized()
+	var turn_axis := current_basis.x if v.y != 0.0 else current_basis.y if v.x != 0.0 else Vector3.ZERO
+	if turn_axis == Vector3.ZERO:
+		return
+
+	var turn_angle := deg_to_rad(turn_amount_degrees * (v.y - v.x))
+	var target_quaternion := current_basis.rotated(turn_axis, turn_angle).orthonormalized().get_rotation_quaternion()
+
+	turn_tween = create_tween()
+	turn_tween.set_trans(Tween.TRANS_SINE)
+	turn_tween.set_ease(Tween.EASE_OUT)
+	turn_tween.tween_property(self, "quaternion", target_quaternion, turn_duration)
