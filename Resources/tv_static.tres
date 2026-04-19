@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dmee5abgg5t5h"]
 
-[ext_resource type="Shader" uid="uid://eh8e4ywf613t" path="res://Resources/tv_static.gdshader" id="1_d38hu"]
+[ext_resource type="Shader" path="res://Resources/tv_static.gdshader" id="1_d38hu"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_d38hu"]
 frequency = 0.2
