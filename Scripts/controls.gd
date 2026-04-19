@@ -39,7 +39,7 @@ func static_all_screens():
 
 # function called when a button is pushed
 func change_ship_screen(forward : bool):
-	if current_ship == null or not currently_watching:
+	if current_ship == null or not currently_watching or len(director.ships) <= 1:
 		return
 	
 	var found_index = -1
@@ -60,6 +60,6 @@ func change_ship_screen(forward : bool):
 func left_click_connect(node : Node, callable : Callable):
 	node.input_event.connect(
 		func(_camera, event, _event_position, _normal, _shape_idx):
-			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 				callable.call()
 	)

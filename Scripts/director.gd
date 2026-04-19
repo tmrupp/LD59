@@ -101,6 +101,8 @@ func spawn_ship():
 
 	new_ship.position = ship_spawn_center + Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)) * ship_spawn_extents / 2.0
 
+	new_ship.look_at(Vector3.ZERO)
+
 func clear_asteroids():
 	print("Clearing asteroids")
 	for asteroid in asteroids:
