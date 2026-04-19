@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://ciurxjtokvv5l"]
+[gd_scene format=3 uid="uid://co2gisge38p50"]
 
 [ext_resource type="Texture2D" uid="uid://c3tpbvo0vnbmf" path="res://Resources/titlecard2.png" id="1_ispaa"]
 [ext_resource type="Texture2D" uid="uid://bhh1xtvtwv6dy" path="res://Resources/star.png" id="2_bom4k"]
 [ext_resource type="Texture2D" uid="uid://faxpud5d3dpy" path="res://Resources/box1.png" id="3_csl5r"]
+[ext_resource type="Texture2D" uid="uid://bw3nsp7v6cn0y" path="res://Resources/box2.png" id="4_bom4k"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1687573044]
 
@@ -54,7 +55,7 @@ expand_mode = 2
 [node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=485648598]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 46
+theme_override_font_sizes/font_size = 60
 text = "ROIDS"
 horizontal_alignment = 1
 
@@ -63,13 +64,30 @@ layout_mode = 2
 texture = ExtResource("2_bom4k")
 expand_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/VBoxContainer" unique_id=688806574]
+[node name="Control" type="Control" parent="Control/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1905006556]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("3_csl5r")
-expand_mode = 3
+size_flags_stretch_ratio = 5.63
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect" unique_id=1158253108]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer" unique_id=27933291]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.68
+
+[node name="Control" type="Control" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=2025956363]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=688806574]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 14.05
+texture = ExtResource("3_csl5r")
+expand_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect" unique_id=1158253108]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,24 +99,32 @@ theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 28
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer" unique_id=1658165797]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect/MarginContainer" unique_id=1658165797]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=235274134]
+[node name="Button" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect/MarginContainer/VBoxContainer" unique_id=235274134]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
 text = "Start"
 
-[node name="Button2" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=516056143]
+[node name="Button2" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect/MarginContainer/VBoxContainer" unique_id=516056143]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
 text = "Options"
 
-[node name="Button3" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=613281589]
+[node name="Button3" type="Button" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TextureRect/MarginContainer/VBoxContainer" unique_id=613281589]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
 text = "Exit
 "
+
+[node name="Control2" type="Control" parent="Control/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1637135021]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="Spacer" type="Control" parent="Control/MarginContainer/HBoxContainer" unique_id=571812321]
 layout_mode = 2
@@ -108,8 +134,36 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1903966962]
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1474760793]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.95
+texture = ExtResource("4_bom4k")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2/TextureRect" unique_id=897623680]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer" unique_id=1903966962]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer" unique_id=559279900]
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/VBoxContainer" unique_id=96207955]
 layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 25
+text = "volume"
+
+[node name="HSlider" type="HSlider" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/VBoxContainer" unique_id=559279900]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Control/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=565269988]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.74
