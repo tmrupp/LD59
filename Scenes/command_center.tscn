@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://c44coabjath5c" path="res://Resources/space_sky.gdshader" id="1_h4dh8"]
 [ext_resource type="PackedScene" uid="uid://dx8xtp808al5q" path="res://3D Models/ControlCenter.glb" id="1_lv533"]
+[ext_resource type="AudioStream" uid="uid://cmumcinoty2k1" path="res://sounds/roids.mp3" id="2_escgk"]
 [ext_resource type="Script" uid="uid://daftteavwxk0y" path="res://Scripts/camera_look.gd" id="2_kesst"]
 [ext_resource type="Script" uid="uid://bimchi4sd05h6" path="res://Scripts/controls.gd" id="3_0rffn"]
 [ext_resource type="Material" uid="uid://crab0h8jo2vs3" path="res://Resources/refract.tres" id="4_a3bg2"]
@@ -55,6 +56,10 @@ transform = Transform3D(0.34202015, -0.9396926, -4.1075268e-08, 0, -4.371139e-08
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1095289661]
 environment = SubResource("Environment_jcws5")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=27187011]
+stream = ExtResource("2_escgk")
+autoplay = true
 
 [node name="Player" type="Node3D" parent="." unique_id=1165334094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.153, 1.301)
