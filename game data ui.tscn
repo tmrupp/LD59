@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://b28pa33s45xj5" path="res://Resources/bg.png" id="1_57oua"]
 [ext_resource type="Texture2D" uid="uid://cnwdy8ea7014v" path="res://Resources/stopwatch.png" id="2_r36lw"]
+[ext_resource type="Texture2D" uid="uid://bp3v38wv1ops6" path="res://Resources/ships alive.png" id="3_unf1k"]
+[ext_resource type="Texture2D" uid="uid://bl1qjtqn8dpo2" path="res://Resources/ships delivered.png" id="4_3hjyx"]
+[ext_resource type="Texture2D" uid="uid://g60eqo100hpw" path="res://Resources/shipsdestroyed.png" id="5_unf1k"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1303261204]
 
@@ -54,14 +57,20 @@ expand_mode = 3
 [node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/icons" unique_id=505627760]
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("3_unf1k")
+expand_mode = 2
 
 [node name="TextureRect3" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/icons" unique_id=532721346]
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("4_3hjyx")
+expand_mode = 2
 
 [node name="TextureRect4" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/icons" unique_id=619890628]
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("5_unf1k")
+expand_mode = 2
 
 [node name="names" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=1503170207]
 layout_mode = 2
