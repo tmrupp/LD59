@@ -50,30 +50,31 @@ func populate_screens(ship):
 	compass_screen.set_surface_override_material(0, ship.ship_data_feed.material)
 	game_data_screen.set_surface_override_material(0, ship.game_data_feed.material)
 
+func watch_ship(ship):
+	current_ship = ship
+	currently_watching = true
+	ship_screen.set_surface_override_material(0, tv_static_material)
+	ship.tree_exiting.connect(_on_watched_ship_dying, CONNECT_ONE_SHOT)
+	get_tree().create_timer(0.1).timeout.connect(func():
+		if is_instance_valid(ship):
+			populate_screens(ship)
+	)
+
+func _on_watched_ship_dying():
+	currently_watching = false
+	current_ship = null
+	static_all_screens()
+
 func _process(_delta: float) -> void:
 	# clean dead ships from the director's list first
-	director.ships = director.ships.filter(func(s): return is_instance_valid(s))
-	
-	if current_ship != null and not is_instance_valid(current_ship):
-		currently_watching = false
-		current_ship = null
-		static_all_screens()
-		
+	director.ships = director.ships.filter(func(s): return is_instance_valid(s) and not s.is_queued_for_deletion())
 	
 	# automatically start watching a ship's camera feed if we're not watching one right now
-	if not currently_watching and len(director.ships) > 0:
-		#print("found a screen to watch!")
-		var ship = director.ships[0]
-		currently_watching = true
-		current_ship = ship
-		ship_screen.set_surface_override_material(0, tv_static_material)
-		get_tree().create_timer(0.1).timeout.connect(func():
-			if is_instance_valid(ship):
-				populate_screens(ship)
-		)
+	if not currently_watching and director.ships.size() > 0:
+		watch_ship(director.ships[0])
 	
 	# static out the monitor if there are no ship cameras to watch
-	if currently_watching and len(director.ships) < 1:
+	if currently_watching and director.ships.size() < 1:
 		print("no more screens to watch!")
 		static_all_screens()
 		currently_watching = false
@@ -85,26 +86,22 @@ func static_all_screens():
 
 # function called when a button is pushed
 func change_ship_screen(forward : bool):
-	if current_ship == null or not currently_watching or len(director.ships) <= 1:
+	if not currently_watching or director.ships.size() <= 1:
+		return
+	if not is_instance_valid(current_ship):
 		return
 	
 	var found_index = -1
-	for i in range(len(director.ships)):
+	for i in range(director.ships.size()):
 		if director.ships[i] == current_ship:
 			found_index = i
 			break
 	if found_index != -1:
-		var next_index = (found_index + (1 if forward else -1)) % len(director.ships)
-		current_ship = director.ships[next_index]
-		# show static for 0.1 seconds then show the new camera view
-		ship_screen.set_surface_override_material(0, tv_static_material)
-		var ship = current_ship
-		get_tree().create_timer(0.1).timeout.connect(func():
-			if ship != null and is_instance_valid(ship):
-				populate_screens(ship)
-			else:
-				print("SHIP NOT VALID TO SWITCH TO (2)")
-		)
+		# disconnect the old ship's signal before switching
+		if current_ship.tree_exiting.is_connected(_on_watched_ship_dying):
+			current_ship.tree_exiting.disconnect(_on_watched_ship_dying)
+		var next_index = (found_index + (1 if forward else -1)) % director.ships.size()
+		watch_ship(director.ships[next_index])
 
 # used to connect the signal of left clicking on something to a specific action
 func left_click_connect(node : Node, callable : Callable):
