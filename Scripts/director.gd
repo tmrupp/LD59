@@ -58,14 +58,6 @@ func _process(delta: float) -> void:
 	if len(ships) != cached_ship_count:
 		cached_ship_count = len(ships)
 		print("we now have ", cached_ship_count, " ships")
-		
-			
-			
-func get_next_valid_ship():
-	ships = ships.filter(func(s): return is_instance_valid(s))
-	if ships.size() > 0:
-		return ships[0]
-	return null
 
 func init_asteroids():
 	# approximately how many asteroids in each dimensions to distribute them in a 3d grid
