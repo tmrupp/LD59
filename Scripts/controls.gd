@@ -21,8 +21,10 @@ func _ready() -> void:
 	left_click_connect($"ControlCenter/Switching Ships Button_001/StaticBody3D", change_ship_screen.bind(false))
 
 	for idx in range(buttons.size()):
-		print("%d: Connecting button: %s" % [idx, buttons[idx]])
-		left_click_connect(get_node("ControlCenter/%s/StaticBody3D" % buttons[idx]), grid_button_pressed.bind(idx))
+		#print("%d: Connecting button: %s" % [idx, buttons[idx]])
+		var n = "ControlCenter/%s/StaticBody3D" % buttons[idx]
+		if has_node(n):
+			left_click_connect(get_node(n), grid_button_pressed.bind(idx))
 
 func grid_button_pressed(idx: int):
 	print("Grid button pressed: %d" % idx)
@@ -94,7 +96,7 @@ func left_click_connect(node : Node, callable : Callable):
 	if node == null:
 		return
 
-	print("connecting left click for node: %s" % node.name)
+	#print("connecting left click for node: %s" % node.name)
 		
 	node.input_event.connect(
 		func(_camera, event, _event_position, _normal, _shape_idx):

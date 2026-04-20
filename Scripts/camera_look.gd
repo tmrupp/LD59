@@ -14,7 +14,7 @@ func zoom(amount: float) -> void:
 	zoom_tween.tween_property(camera, "fov", clampf(camera.fov - amount, 20, 90), zoom_duration)
 	zoom_tween.play()
 
-var x_angle_clamp = Vector2(-deg_to_rad(60), deg_to_rad(30))
+var x_angle_clamp = Vector2(-deg_to_rad(90), deg_to_rad(30))
 var y_angle_clamp = Vector2(-deg_to_rad(30), deg_to_rad(30))
 
 func _input(event: InputEvent) -> void:
