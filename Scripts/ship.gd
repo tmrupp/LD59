@@ -9,6 +9,8 @@ extends Node3D
 
 var director : Node = null
 
+@onready var goal = $"../../Goal"
+
 # var screen: MeshInstance3D
 var screen_feed
 var ship_data_feed
@@ -47,7 +49,16 @@ class screen extends Node:
 	func render() -> void:
 		while true:
 			await (get_tree().create_timer(1.0 / self.ship.fps).timeout)
-			if self.buffer == null or self.buffer.size() < self.ship.delay * self.ship.fps:
+			if self.buffer == null:
+				continue
+
+			var target_frames := int(ceil(self.ship.delay * self.ship.fps))
+
+			# If delay is lowered at runtime, trim old buffered frames so latency drops immediately.
+			while self.buffer.size() > target_frames:
+				self.buffer.pop_front()
+
+			if self.buffer.size() < target_frames:
 				continue
 
 			if self.material == null:
@@ -159,12 +170,16 @@ func _on_area_entered(area: Area3D) -> void:
 func _process(delta: float) -> void:
 	position += -transform.basis.z * velocity * delta
 	ammo_name_label.text = str(ammo)
-	delay_name_label.text = str(delay)
+	delay_name_label.text = "%.2f" % delay
 	
 	time_label.text = str(int(Time.get_ticks_msec()*.001), " secs")
 	active_ships_label.text = str($"..".ships.size())
 	delivered_ships_label.text = str(delivered_ships)
 	destroyed_ships_label.text = str(destroyed_ships)
+
+	var distance_to_goal = (goal.position - position).length()
+	print("distance to goal:", distance_to_goal/150*3)
+	delay = clamp(distance_to_goal/150*3, 0.0, 3.0)
 
 func turn(v: Vector3):
 	if turn_tween != null and turn_tween.is_valid():
