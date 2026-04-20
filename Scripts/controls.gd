@@ -28,7 +28,7 @@ func _ready() -> void:
 			left_click_connect(get_node(n), grid_button_pressed.bind(idx))
 
 func grid_button_pressed(idx: int):
-	print("Grid button pressed: %d" % idx)
+	#print("Grid button pressed: %d" % idx)
 	if current_ship == null or not is_instance_valid(current_ship):
 		return
 	match idx:
@@ -49,25 +49,26 @@ func populate_screens(ship):
 	compass_screen.set_surface_override_material(0, ship.ship_data_feed.material)
 
 func _process(_delta: float) -> void:
+	# clean dead ships from the director's list first
+	director.ships = director.ships.filter(func(s): return is_instance_valid(s))
 	
-	if not is_instance_valid(current_ship):
+	if current_ship != null and not is_instance_valid(current_ship):
 		currently_watching = false
-		ship_screen.set_surface_override_material(0, tv_static_material)
+		current_ship = null
+		static_all_screens()
 		
 	
 	# automatically start watching a ship's camera feed if we're not watching one right now
 	if not currently_watching and len(director.ships) > 0:
 		#print("found a screen to watch!")
-		var ship = director.get_next_valid_ship()
-		if ship != null:
-			get_tree().create_timer(0.1).timeout.connect(func():
-				if ship != null and is_instance_valid(ship):
-					populate_screens(ship)
-				else:
-					print("SHIP NOT VALID TO SWITCH TO (1)")
-			)
-			currently_watching = true
-			current_ship = ship
+		var ship = director.ships[0]
+		currently_watching = true
+		current_ship = ship
+		ship_screen.set_surface_override_material(0, tv_static_material)
+		get_tree().create_timer(0.1).timeout.connect(func():
+			if is_instance_valid(ship):
+				populate_screens(ship)
+		)
 	
 	# static out the monitor if there are no ship cameras to watch
 	if currently_watching and len(director.ships) < 1:
