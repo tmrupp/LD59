@@ -44,9 +44,9 @@ func shoot_selected_ship():
 func turn_selected_ship(direction: Vector3):
 	current_ship.turn(direction)
 	
-func populate_screens():
-	ship_screen.set_surface_override_material(0, current_ship.screen_material)
-	compass_screen.set_surface_override_material(0, current_ship.compass_material)
+func populate_screens(ship):
+	ship_screen.set_surface_override_material(0, ship.screen_material)
+	compass_screen.set_surface_override_material(0, ship.compass_material)
 
 func _process(_delta: float) -> void:
 	
@@ -61,8 +61,10 @@ func _process(_delta: float) -> void:
 		var ship = director.get_next_valid_ship()
 		if ship != null:
 			get_tree().create_timer(0.1).timeout.connect(func():
-				#ship_screen.set_surface_override_material(0, current_ship.screen_material)
-				populate_screens()
+				if ship != null and is_instance_valid(ship):
+					populate_screens(ship)
+				else:
+					print("SHIP NOT VALID TO SWITCH TO (1)")
 			)
 			currently_watching = true
 			current_ship = ship
@@ -93,9 +95,12 @@ func change_ship_screen(forward : bool):
 		current_ship = director.ships[next_index]
 		# show static for 0.1 seconds then show the new camera view
 		ship_screen.set_surface_override_material(0, tv_static_material)
+		var ship = current_ship
 		get_tree().create_timer(0.1).timeout.connect(func():
-			#ship_screen.set_surface_override_material(0, current_ship.screen_material)
-			populate_screens()
+			if ship != null and is_instance_valid(ship):
+				populate_screens(ship)
+			else:
+				print("SHIP NOT VALID TO SWITCH TO (2)")
 		)
 
 # used to connect the signal of left clicking on something to a specific action
