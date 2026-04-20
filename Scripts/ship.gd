@@ -5,19 +5,23 @@ extends Node3D
 @onready var explosion_prefab = preload("res://Scenes/explosion.tscn")
 @onready var loading_viewport = $Loading
 @onready var compass_viewport = $Compass
+@onready var ship_data_viewport = $ShipDataViewport
 
 var director : Node = null
 
 # var screen: MeshInstance3D
 var screen_material: ShaderMaterial
 var compass_material: ShaderMaterial
+var ship_data_material: ShaderMaterial
 
 var ship_name : String
+var ammo = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SubViewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	compass_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	ship_data_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 
 	$Area3D.body_entered.connect(_on_body_entered)
 	$Area3D.area_entered.connect(_on_area_entered)
@@ -35,17 +39,30 @@ func _ready() -> void:
 	compass_material = ShaderMaterial.new()
 	compass_material.shader = shader
 	compass_material.set_shader_parameter("display_texture", compass_viewport.get_texture())
+	
+	ship_data_material = ShaderMaterial.new()
+	ship_data_material.shader = shader
+	ship_data_material.set_shader_parameter("display_texture", ship_data_viewport.get_texture())
 
 	#screen.set_surface_override_material(0, screen_material)
 
 	# randomly generate name of the form XX-000
 	ship_name = char(randi_range(65, 90)) + char(randi_range(65, 90)) + "-" + str(randi_range(0, 9)) + str(randi_range(0, 9)) + str(randi_range(0, 9))
-
+	ship_name_label.text = ship_name
+	ammo_name_label.text = str(ammo)
+	delay_name_label.text = str(delay)
+	
 	capture(feed_buffer, $SubViewport)
 	render(feed_buffer, screen_material)
 	
 	capture(compass_buffer, compass_viewport)
 	render(compass_buffer, compass_material)
+	
+	capture(ship_data_buffer, ship_data_viewport)
+	render(ship_data_buffer, ship_data_material)
+@onready var ship_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Label2
+@onready var ammo_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect2/MarginContainer/VBoxContainer/Label4
+@onready var delay_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/HBoxContainer/Label3
 
 @export var delay = 2.0
 @export var fps = 15
@@ -56,6 +73,7 @@ func _ready() -> void:
 
 var feed_buffer = []
 var compass_buffer = []
+var ship_data_buffer = []
 var turn_tween: Tween
 
 func capture(buffer: Array, viewport: SubViewport) -> void:

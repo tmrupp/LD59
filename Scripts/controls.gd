@@ -46,7 +46,7 @@ func turn_selected_ship(direction: Vector3):
 	
 func populate_screens(ship):
 	ship_screen.set_surface_override_material(0, ship.screen_material)
-	compass_screen.set_surface_override_material(0, ship.compass_material)
+	compass_screen.set_surface_override_material(0, ship.ship_data_material)
 
 func _process(_delta: float) -> void:
 	
