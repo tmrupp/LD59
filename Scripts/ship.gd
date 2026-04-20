@@ -14,6 +14,9 @@ var screen_feed
 var ship_data_feed
 var game_data_feed
 
+static var destroyed_ships = 0
+static var delivered_ships = 0
+
 var ship_name : String
 var ammo = 3
 
@@ -137,12 +140,14 @@ func _on_body_entered(body: Node) -> void:
 		var new_explosion = explosion_prefab.instantiate()
 		get_tree().root.add_child(new_explosion)
 		new_explosion.position = position
+		destroyed_ships += 1
 		
 		queue_free()
 
 func _on_area_entered(area: Area3D) -> void:
 	if area.is_in_group("goal"):
 		print("Reached goal area:", area.get_parent().name)
+		delivered_ships += 1
 		queue_free()
 
 
@@ -153,8 +158,8 @@ func _process(delta: float) -> void:
 	
 	time_label.text = str(int(Time.get_ticks_msec()*.001), " secs")
 	active_ships_label.text = str($"..".ships.size())
-	#delivered_ships_label.text = 
-	#destroyed_ships_label.text = 
+	delivered_ships_label.text = str(delivered_ships)
+	destroyed_ships_label.text = str(destroyed_ships)
 
 func turn(v: Vector3):
 	if turn_tween != null and turn_tween.is_valid():
