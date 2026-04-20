@@ -5,7 +5,7 @@ extends Node3D
 const mouse_sensitivity_vert : float = 0.001
 const mouse_sensitivity_horiz : float = 0.0005
 
-@export var zoom_duration : float = .5
+@export var zoom_duration : float = .2
 @export var zoom_amount : float = 50.0
 
 func zoom(amount: float) -> void:
