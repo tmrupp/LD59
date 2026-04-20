@@ -1,12 +1,13 @@
-[gd_scene format=3 uid="uid://co2gisge38p50"]
+[gd_scene format=3 uid="uid://ciurxjtokvv5l"]
 
-[ext_resource type="Script" uid="uid://8lnf6aqvpeoe" path="res://ui.gd" id="1_csl5r"]
+[ext_resource type="Script" path="res://ui.gd" id="1_csl5r"]
 [ext_resource type="Texture2D" uid="uid://c3tpbvo0vnbmf" path="res://Resources/titlecard2.png" id="1_ispaa"]
 [ext_resource type="Texture2D" uid="uid://bhh1xtvtwv6dy" path="res://Resources/star.png" id="2_bom4k"]
 [ext_resource type="Texture2D" uid="uid://faxpud5d3dpy" path="res://Resources/box1.png" id="3_csl5r"]
 [ext_resource type="Texture2D" uid="uid://bw3nsp7v6cn0y" path="res://Resources/box2.png" id="4_bom4k"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1687573044]
+process_mode = 3
 script = ExtResource("1_csl5r")
 
 [node name="Control" type="Control" parent="." unique_id=1270044155]
