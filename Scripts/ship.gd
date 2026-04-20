@@ -128,10 +128,15 @@ func render(buffer: Array, material: ShaderMaterial) -> void:
 		material.set_shader_parameter("display_texture", delayed_texture)
 
 func shoot():
-	var laser = laser_scene.instantiate()
-	laser.global_transform = global_transform
-	get_tree().root.get_child(0).add_child(laser)
-	laser.setup(self)
+	if ammo > 0:
+		var laser = laser_scene.instantiate()
+		laser.global_transform = global_transform
+		get_tree().root.get_child(0).add_child(laser)
+		laser.setup(self)
+		ammo -= 1
+		return true
+	else:
+		return false
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("obstacle"):
