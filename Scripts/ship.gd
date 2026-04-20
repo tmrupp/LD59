@@ -4,17 +4,20 @@ extends Node3D
 @onready var loading_font = preload("res://Resources/Anta-Regular.ttf")
 @onready var explosion_prefab = preload("res://Scenes/explosion.tscn")
 @onready var loading_viewport = $Loading
+@onready var compass_viewport = $Compass
 
 var director : Node = null
 
 # var screen: MeshInstance3D
 var screen_material: ShaderMaterial
+var compass_material: ShaderMaterial
 
 var ship_name : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SubViewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	compass_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 
 	$Area3D.body_entered.connect(_on_body_entered)
 	$Area3D.area_entered.connect(_on_area_entered)
@@ -28,14 +31,21 @@ func _ready() -> void:
 	screen_material = ShaderMaterial.new()
 	screen_material.shader = shader
 	screen_material.set_shader_parameter("display_texture", loading_viewport.get_texture())
+	
+	compass_material = ShaderMaterial.new()
+	compass_material.shader = shader
+	compass_material.set_shader_parameter("display_texture", compass_viewport.get_texture())
 
 	#screen.set_surface_override_material(0, screen_material)
 
 	# randomly generate name of the form XX-000
 	ship_name = char(randi_range(65, 90)) + char(randi_range(65, 90)) + "-" + str(randi_range(0, 9)) + str(randi_range(0, 9)) + str(randi_range(0, 9))
 
-	capture()
-	render()
+	capture(feed_buffer, $SubViewport)
+	render(feed_buffer, screen_material)
+	
+	capture(compass_buffer, compass_viewport)
+	render(compass_buffer, compass_material)
 
 @export var delay = 2.0
 @export var fps = 15
@@ -44,16 +54,17 @@ func _ready() -> void:
 @export var turn_amount_degrees := 45.0
 @export var turn_duration := 0.25
 
-var buffer = []
+var feed_buffer = []
+var compass_buffer = []
 var turn_tween: Tween
 
-func capture() -> void:
+func capture(buffer: Array, viewport: SubViewport) -> void:
 	while true:
 		await (get_tree().create_timer(1.0 / fps).timeout)
-		var image = $SubViewport.get_texture().get_image()
+		var image = viewport.get_texture().get_image()
 		buffer.append(image.duplicate())
 
-func render() -> void:
+func render(buffer: Array, material: ShaderMaterial) -> void:
 	while true:
 		await (get_tree().create_timer(1.0 / fps).timeout)
 		if buffer == null or buffer.size() < delay * fps:
@@ -67,21 +78,7 @@ func render() -> void:
 			loading_viewport = null
 
 		var delayed_texture := ImageTexture.create_from_image(buffer.pop_front())
-		screen_material.set_shader_parameter("display_texture", delayed_texture)
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		match event.keycode:
-			KEY_W:
-				turn(Vector3.UP)
-			KEY_S:
-				turn(Vector3.DOWN)
-			KEY_A:
-				turn(Vector3.LEFT)
-			KEY_D:
-				turn(Vector3.RIGHT)
-			KEY_SPACE:
-				shoot()
+		material.set_shader_parameter("display_texture", delayed_texture)
 
 func shoot():
 	var laser = laser_scene.instantiate()

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bimchi4sd05h6" path="res://Scripts/controls.gd" id="3_0rffn"]
 [ext_resource type="Material" uid="uid://crab0h8jo2vs3" path="res://Resources/refract.tres" id="4_a3bg2"]
 [ext_resource type="Script" uid="uid://k22dnw2707cg" path="res://Scripts/director.gd" id="4_dnagy"]
+[ext_resource type="PackedScene" uid="uid://ebtsdt86hsso" path="res://Scenes/goal.tscn" id="4_yrvai"]
 [ext_resource type="Material" uid="uid://dmee5abgg5t5h" path="res://Resources/tv_static.tres" id="5_escgk"]
 [ext_resource type="PackedScene" uid="uid://d135y15e4cu5v" path="res://3D Models/spacestation.glb" id="9_yrvai"]
 [ext_resource type="Material" uid="uid://bvraimd2v5yy" path="res://Resources/flashing_rectangle.tres" id="10_5ygjn"]
@@ -74,6 +75,9 @@ environment = SubResource("Environment_jcws5")
 stream = ExtResource("2_escgk")
 volume_db = -10.0
 autoplay = true
+
+[node name="Goal" parent="." unique_id=826739270 instance=ExtResource("4_yrvai")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -25.847, 1.301)
 
 [node name="Player" type="Node3D" parent="." unique_id=1165334094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.153, 1.301)

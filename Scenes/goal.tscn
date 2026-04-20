@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ebtsdt86hsso"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8alpp"]
+transparency = 1
+albedo_color = Color(0.0703, 0.37, 0.19018002, 0.33333334)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7m3ry"]
+material = SubResource("StandardMaterial3D_8alpp")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ugvm7"]
+
+[node name="Goal" type="Node3D" unique_id=826739270]
+transform = Transform3D(6.585, 0, 0, 0, 6.585, 0, 0, 0, 6.585, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=30278588]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+mesh = SubResource("SphereMesh_7m3ry")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1645870408 groups=["goal"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1020434337]
+shape = SubResource("SphereShape3D_ugvm7")

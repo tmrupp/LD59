@@ -8,6 +8,7 @@ extends Node3D
 @onready var screen_3 = $"ControlCenter/Screen3"
 
 @onready var ship_screen = screen_2 # $"ControlCenter/Screen2"
+@onready var compass_screen = screen_3 # $"ControlCenter/Screen2"
 
 @onready var all_screens = [screen_1, screen_2, screen_3]
 
@@ -42,6 +43,10 @@ func shoot_selected_ship():
 	
 func turn_selected_ship(direction: Vector3):
 	current_ship.turn(direction)
+	
+func populate_screens():
+	ship_screen.set_surface_override_material(0, current_ship.screen_material)
+	compass_screen.set_surface_override_material(0, current_ship.compass_material)
 
 func _process(_delta: float) -> void:
 	
@@ -56,7 +61,8 @@ func _process(_delta: float) -> void:
 		var ship = director.get_next_valid_ship()
 		if ship != null:
 			get_tree().create_timer(0.1).timeout.connect(func():
-				ship_screen.set_surface_override_material(0, current_ship.screen_material)
+				#ship_screen.set_surface_override_material(0, current_ship.screen_material)
+				populate_screens()
 			)
 			currently_watching = true
 			current_ship = ship
@@ -88,7 +94,8 @@ func change_ship_screen(forward : bool):
 		# show static for 0.1 seconds then show the new camera view
 		ship_screen.set_surface_override_material(0, tv_static_material)
 		get_tree().create_timer(0.1).timeout.connect(func():
-			ship_screen.set_surface_override_material(0, current_ship.screen_material)
+			#ship_screen.set_surface_override_material(0, current_ship.screen_material)
+			populate_screens()
 		)
 
 # used to connect the signal of left clicking on something to a specific action

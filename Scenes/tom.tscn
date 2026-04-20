@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://de42481q0cwhl" path="res://Scenes/ship.tscn" id="1_ugvm7"]
 [ext_resource type="Script" uid="uid://dgyoiv2wukaxw" path="res://Scripts/asteroid.gd" id="2_85xcm"]
 [ext_resource type="PackedScene" uid="uid://c0otna6ujbk57" path="res://Scenes/asteroid.tscn" id="2_v7nwh"]
+[ext_resource type="PackedScene" uid="uid://ebtsdt86hsso" path="res://Scenes/goal.tscn" id="4_oesl5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85xcm"]
 albedo_color = Color(0.38629052, 0.2949082, 0.08428394, 1)
@@ -11,13 +12,6 @@ albedo_color = Color(0.38629052, 0.2949082, 0.08428394, 1)
 material = SubResource("StandardMaterial3D_85xcm")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ugvm7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8alpp"]
-transparency = 1
-albedo_color = Color(0.0703, 0.37, 0.19018002, 0.33333334)
-
-[sub_resource type="SphereMesh" id="SphereMesh_7m3ry"]
-material = SubResource("StandardMaterial3D_8alpp")
 
 [node name="Main" type="Node3D" unique_id=1987251493]
 
@@ -48,9 +42,10 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Ship" parent="." unique_id=962295472 instance=ExtResource("1_ugvm7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0983467, 0.002309084, 2.9002287)
 
 [node name="Ship2" parent="." unique_id=669010389 instance=ExtResource("1_ugvm7")]
-transform = Transform3D(0.7273896, 0, 0.6862247, 0, 1, 0, -0.6862247, 0, 0.7273896, 1.8856115, 0, -2.1898193)
+transform = Transform3D(0.7273896, 0, 0.6862247, 0, 1, 0, -0.6862247, 0, 0.7273896, 3.0124724, 0, -2.513781)
 
 [node name="Asteroid3" parent="." unique_id=129984092 instance=ExtResource("2_v7nwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19755888, -3.4443474)
@@ -79,14 +74,5 @@ mesh = SubResource("SphereMesh_joe6r")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Asteroid2/StaticBody3D" unique_id=1773992455]
 shape = SubResource("SphereShape3D_ugvm7")
 
-[node name="Goal" type="Node3D" parent="." unique_id=791758862]
+[node name="Goal" parent="." unique_id=826739270 instance=ExtResource("4_oesl5")]
 transform = Transform3D(6.585, 0, 0, 0, 6.585, 0, 0, 0, 6.585, -0.42079735, 0, -10.247673)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Goal" unique_id=632127229]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
-mesh = SubResource("SphereMesh_7m3ry")
-
-[node name="Area3D" type="Area3D" parent="Goal" unique_id=399263299 groups=["goal"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal/Area3D" unique_id=1790455981]
-shape = SubResource("SphereShape3D_ugvm7")
