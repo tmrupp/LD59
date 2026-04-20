@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bbvi22apy5w6v"]
 
 [ext_resource type="Texture2D" uid="uid://c3tpbvo0vnbmf" path="res://Resources/titlecard2.png" id="1_6cxpi"]
+[ext_resource type="Texture2D" uid="uid://bw3nsp7v6cn0y" path="res://Resources/box2.png" id="2_v7q4x"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1972184326]
 
@@ -53,34 +54,78 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1855748329]
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1358745154]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_v7q4x")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TextureRect" unique_id=16722260]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TextureRect/MarginContainer" unique_id=333952052]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TextureRect/MarginContainer/HBoxContainer" unique_id=1855748329]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
 text = "Score:"
 
-[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1156046068]
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TextureRect/MarginContainer/HBoxContainer" unique_id=1156046068]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
 
 [node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1762185374]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.11
+size_flags_stretch_ratio = 1.64
 
-[node name="Label3" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1638091672]
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1209438755]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_v7q4x")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TextureRect2" unique_id=348046427]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TextureRect2/MarginContainer" unique_id=121839133]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TextureRect2/MarginContainer/HBoxContainer" unique_id=1638091672]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 50
 text = "Time:"
 
-[node name="Label4" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1259444094]
+[node name="Label4" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TextureRect2/MarginContainer/HBoxContainer" unique_id=1259444094]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
 
 [node name="Control2" type="Control" parent="Control/MarginContainer/VBoxContainer" unique_id=1945071618]
 layout_mode = 2
@@ -94,23 +139,43 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1196404213]
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=236988002]
 layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_v7q4x")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2/TextureRect" unique_id=1196404213]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 198.0
+offset_bottom = 93.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 text = "Retry?"
+flat = true
 
 [node name="Control2" type="Control" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2100067659]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button2" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=538289369]
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1124102977]
 layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_v7q4x")
+expand_mode = 2
+
+[node name="Button2" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2/TextureRect2" unique_id=538289369]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 198.0
+offset_bottom = 93.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 text = "Exit"
+flat = true
 
 [node name="Control3" type="Control" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=860014394]
 layout_mode = 2
