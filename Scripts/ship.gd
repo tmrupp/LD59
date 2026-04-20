@@ -178,7 +178,7 @@ func _process(delta: float) -> void:
 	destroyed_ships_label.text = str(destroyed_ships)
 
 	var distance_to_goal = (goal.position - position).length()
-	print("distance to goal:", distance_to_goal/150*3)
+	#print("distance to goal:", distance_to_goal/150*3)
 	delay = clamp(distance_to_goal/150*3, 0.0, 3.0)
 
 func turn(v: Vector3):
