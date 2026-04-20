@@ -25,6 +25,9 @@ bottom_radius = 0.2
 [sub_resource type="ViewportTexture" id="ViewportTexture_kxdp2"]
 viewport_path = NodePath("ShipDataViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_cmder"]
+viewport_path = NodePath("Compass")
+
 [node name="Ship" type="Node3D" unique_id=962295472]
 script = ExtResource("1_l3rv8")
 
@@ -303,13 +306,15 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect2/MarginContainer/VBoxContainer" unique_id=1021072338]
 layout_mode = 2
 size_flags_vertical = 2
+size_flags_stretch_ratio = 0.16
 theme_override_font_sizes/font_size = 20
 text = "Direction:"
 
-[node name="Label4" type="Label" parent="ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect2/MarginContainer/VBoxContainer" unique_id=940382673]
+[node name="TextureRect" type="TextureRect" parent="ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect2/MarginContainer/VBoxContainer" unique_id=1905970457]
 layout_mode = 2
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 20
+size_flags_vertical = 3
+texture = SubResource("ViewportTexture_cmder")
+expand_mode = 3
 
 [node name="TextureRect2" type="TextureRect" parent="ShipDataViewport/CanvasLayer/Control" unique_id=1051923039]
 layout_mode = 1

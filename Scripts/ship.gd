@@ -70,18 +70,18 @@ func _ready() -> void:
 	# randomly generate name of the form XX-000
 	ship_name = char(randi_range(65, 90)) + char(randi_range(65, 90)) + "-" + str(randi_range(0, 9)) + str(randi_range(0, 9)) + str(randi_range(0, 9))
 
-	ship_name = char(randi_range(65, 90)) + char(randi_range(65, 90)) + "-" + str(randi_range(0, 9)) + str(randi_range(0, 9)) + str(randi_range(0, 9))
+	compass_feed = screen.new(compass_viewport, self, loading_viewport)
+	add_child(compass_feed)
+	compass_feed.start()
+	
 	ship_name_label.text = ship_name
 	ammo_name_label.text = str(ammo)
 	delay_name_label.text = str(delay)
+	# compass_rect.texture = compass_feed.material
 
 	screen_feed = screen.new($SubViewport, self, loading_viewport)
 	add_child(screen_feed)
 	screen_feed.start()
-	
-	# compass_feed = screen.new(compass_viewport, self, loading_viewport)
-	# add_child(compass_feed)
-	# compass_feed.start()
 
 	ship_data_feed = screen.new(ship_data_viewport, self, loading_viewport)
 	add_child(ship_data_feed)
@@ -90,6 +90,7 @@ func _ready() -> void:
 @onready var ship_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Label2
 @onready var ammo_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect2/MarginContainer/VBoxContainer/Label4
 @onready var delay_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/HBoxContainer/Label3
+@onready var compass_rect = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect2/MarginContainer/VBoxContainer/TextureRect
 
 @export var delay = 2.0
 @export var fps = 15
