@@ -151,8 +151,8 @@ func shoot():
 		return false
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("obstacle"):
-		print("Collided with obstacle:", body.get_parent().name)
+	if body.is_in_group("obstacle") or body.is_in_group("station"):
+		print("Collided with obstacle/station:", body.get_parent().name)
 
 		var new_explosion = explosion_prefab.instantiate()
 		get_tree().root.add_child(new_explosion)

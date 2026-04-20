@@ -202,7 +202,7 @@ ship_spawn_max = 3
 [node name="spacestation" parent="SpaceStation" unique_id=1672393775 instance=ExtResource("9_yrvai")]
 transform = Transform3D(-19.335, 0, 1.6903193e-06, 0, 19.335, 0, -1.6903193e-06, 0, -19.335, 0, -8.72, 13.97)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="SpaceStation/spacestation/spaceStation" parent_id_path=PackedInt32Array(1672393775, 1803730649) index="0" unique_id=1415911636 groups=["obstacle"]]
+[node name="StaticBody3D2" type="StaticBody3D" parent="SpaceStation/spacestation/spaceStation" parent_id_path=PackedInt32Array(1672393775, 1803730649) index="0" unique_id=1415911636 groups=["station"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceStation/spacestation/spaceStation/StaticBody3D2" unique_id=410405774]
 shape = SubResource("ConcavePolygonShape3D_5ygjn")

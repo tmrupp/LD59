@@ -23,13 +23,22 @@ func collide(body):
 		if body.is_in_group("obstacle"):
 			print("collided")
 
-			var new_laser_explosion = laser_explosion_prefab.instantiate()
-			get_tree().root.add_child(new_laser_explosion)
-			new_laser_explosion.position = position
+			make_explosion()
 
 			queue_free()
 			parent.queue_free()
-		
+		elif body.is_in_group("station"):
+			print("hit the station")
+
+			make_explosion()
+
+			queue_free()
+
+func make_explosion():
+	var new_laser_explosion = laser_explosion_prefab.instantiate()
+	get_tree().root.add_child(new_laser_explosion)
+	new_laser_explosion.position = position
+
 func _on_body_entered(body: Node) -> void:
 	print("laser body entered:", body)
 	collide(body)

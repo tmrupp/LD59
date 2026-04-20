@@ -121,7 +121,7 @@ func report_destroyed_ships(amount : int):
 	ui.game_end.call_deferred()
 	
 	game_over_ui.score_value_label.text = str(Ship.delivered_ships)
-	game_over_ui.time_value_label.text = str(int(overall_timer)) + " s"
+	game_over_ui.time_value_label.text = str(int(overall_timer))
 	game_over_ui.show.call_deferred()
 	(func(): $"..".process_mode = Node.PROCESS_MODE_DISABLED).call_deferred()
 
