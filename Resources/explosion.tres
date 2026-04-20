@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://drskjniylqen0"]
 
-[ext_resource type="Shader" uid="uid://dc7d826nmry5v" path="res://Resources/explosion.gdshader" id="1_l34at"]
+[ext_resource type="Shader" path="res://Resources/explosion.gdshader" id="1_l34at"]
 
 [resource]
 resource_local_to_scene = true

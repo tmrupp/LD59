@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dod3tl7ph30ks" path="res://Resources/ship bg.png" id="1_ses7p"]
 [ext_resource type="Texture2D" uid="uid://bw3nsp7v6cn0y" path="res://Resources/box2.png" id="2_jg726"]
+[ext_resource type="Texture2D" uid="uid://opodlsttcqg5" path="res://Resources/arrows.png" id="3_jg726"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=806318409]
 
@@ -49,6 +50,7 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/GridContainer/HBoxContainer" unique_id=798391319]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
 
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer" unique_id=1760064720]
 layout_mode = 2
@@ -63,7 +65,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
@@ -75,14 +77,14 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1539053530]
 layout_mode = 2
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "Ship name:"
 
 [node name="Label2" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=285144488]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 
 [node name="Control" type="Control" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer" unique_id=1804953980]
 layout_mode = 2
@@ -102,7 +104,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 25
+theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
@@ -113,45 +115,98 @@ layout_mode = 2
 [node name="Label3" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect2/MarginContainer/VBoxContainer" unique_id=1921352725]
 layout_mode = 2
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "Ammo:"
 
 [node name="Label4" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect2/MarginContainer/VBoxContainer" unique_id=790173844]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 
 [node name="Control" type="Control" parent="Control/MarginContainer/GridContainer/HBoxContainer" unique_id=741629403]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.75
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/GridContainer/HBoxContainer" unique_id=1961775218]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2" unique_id=1803318103]
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
-text = "Current Direction:"
-
-[node name="Label3" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2" unique_id=838014999]
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2" unique_id=1068950878]
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("2_jg726")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect" unique_id=2040625311]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer" unique_id=67378891]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/VBoxContainer" unique_id=1803318103]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Current Direction:"
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/VBoxContainer" unique_id=838014999]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 20
 
 [node name="Control" type="Control" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2" unique_id=1641766059]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.53
 
-[node name="Label2" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2" unique_id=1813921485]
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 25
-text = "Next direction:"
-
-[node name="Label4" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2" unique_id=2145942551]
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2" unique_id=1314697429]
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("2_jg726")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect2" unique_id=1945503381]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect2/MarginContainer" unique_id=1931423830]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect2/MarginContainer/VBoxContainer" unique_id=1813921485]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Next direction:"
+
+[node name="Label4" type="Label" parent="Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect2/MarginContainer/VBoxContainer" unique_id=2145942551]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=1203060351]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_jg726")
+expand_mode = 2
