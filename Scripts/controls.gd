@@ -22,7 +22,9 @@ func _ready() -> void:
 
 	for idx in range(buttons.size()):
 		print("%d: Connecting button: %s" % [idx, buttons[idx]])
-		left_click_connect(get_node("ControlCenter/%s/StaticBody3D" % buttons[idx]), grid_button_pressed.bind(idx))
+		var n = "ControlCenter/%s/StaticBody3D" % buttons[idx]
+		if has_node(n):
+			left_click_connect(get_node(n), grid_button_pressed.bind(idx))
 
 func grid_button_pressed(idx: int):
 	print("Grid button pressed: %d" % idx)
