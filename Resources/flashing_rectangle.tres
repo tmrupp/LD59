@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://bvraimd2v5yy"]
 
-[ext_resource type="Shader" uid="uid://ca431bgp2expk" path="res://Resources/flashing_rectangle.gdshader" id="1_0v6rp"]
+[ext_resource type="Shader" path="res://Resources/flashing_rectangle.gdshader" id="1_0v6rp"]
 
 [resource]
 render_priority = 0

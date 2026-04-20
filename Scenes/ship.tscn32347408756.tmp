@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://de42481q0cwhl"]
+
+[ext_resource type="Script" uid="uid://62buldcvlc2u" path="res://Scripts/ship.gd" id="1_l3rv8"]
+[ext_resource type="PackedScene" uid="uid://dkg0c5dgi60gu" path="res://3D Models/spaceship.glb" id="2_4qyt1"]
+[ext_resource type="Script" uid="uid://d3xki382y5cpq" path="res://Scripts/Compass.gd" id="4_8aq7e"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ugvm7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ugvm7"]
+
+[sub_resource type="Theme" id="Theme_78pfh"]
+default_font_size = 100
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxxu3"]
+albedo_color = Color(0.45999998, 1, 0.46899998, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6ejuo"]
+material = SubResource("StandardMaterial3D_xxxu3")
+top_radius = 0.0
+bottom_radius = 0.2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kxdp2"]
+viewport_path = NodePath("Compass")
+
+[node name="Ship" type="Node3D" unique_id=962295472]
+script = ExtResource("1_l3rv8")
+
+[node name="spaceship" parent="." unique_id=555634741 instance=ExtResource("2_4qyt1")]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=836166506]
+visible = false
+mesh = SubResource("SphereMesh_ugvm7")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=417491629]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1813683780]
+shape = SubResource("SphereShape3D_ugvm7")
+
+[node name="Loading" type="SubViewport" parent="." unique_id=1851969743]
+
+[node name="Control" type="Control" parent="Loading" unique_id=818359642]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Loading/Control" unique_id=2035764840]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12518838, 0.24896908, 0.19813567, 1)
+
+[node name="Label" type="Label" parent="Loading/Control" unique_id=243935970]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_top = -61.5
+offset_right = 214.5
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_78pfh")
+text = "LOADING"
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1286162305]
+
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=1322803623]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D" unique_id=347077965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.73)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=409095934]
+remote_path = NodePath("../SubViewport/Node3D")
+
+[node name="Compass" type="SubViewport" parent="." unique_id=314758232]
+own_world_3d = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Compass" unique_id=1167508031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("CylinderMesh_6ejuo")
+script = ExtResource("4_8aq7e")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Compass" unique_id=1680224651]
+
+[node name="Camera3D" type="Camera3D" parent="Compass" unique_id=60106070]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1868230547]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=287214606]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -93.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_kxdp2")
+expand_mode = 1

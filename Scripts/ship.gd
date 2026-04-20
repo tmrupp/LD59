@@ -10,12 +10,53 @@ extends Node3D
 var director : Node = null
 
 # var screen: MeshInstance3D
-var screen_material: ShaderMaterial
-var compass_material: ShaderMaterial
-var ship_data_material: ShaderMaterial
+var screen_feed
+var compass_feed
+var ship_data_feed
 
 var ship_name : String
 var ammo = 3
+
+class screen extends Node:
+	var viewport: SubViewport
+	var material: ShaderMaterial
+	var buffer: Array = []
+	var ship: Node
+
+	func _init(_viewport: SubViewport, _ship: Node, loading_viewport: SubViewport) -> void:
+		self.viewport = _viewport
+		self.ship = _ship
+		
+		
+		_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+		
+		var shader = load("res://Resources/screen_shader.gdshader")
+		self.material = ShaderMaterial.new()
+		self.material.shader = shader
+		self.material.set_shader_parameter("display_texture", loading_viewport.get_texture())
+
+	func capture() -> void:
+		while true:
+			await (get_tree().create_timer(1.0 / self.ship.fps).timeout)
+			var image = self.viewport.get_texture().get_image()
+			self.buffer.append(image.duplicate())
+
+	func render() -> void:
+		while true:
+			await (get_tree().create_timer(1.0 / self.ship.fps).timeout)
+			if self.buffer == null or self.buffer.size() < self.ship.delay * self.ship.fps:
+				continue
+
+			if self.material == null:
+				continue
+
+			var delayed_texture := ImageTexture.create_from_image(self.buffer.pop_front())
+			self.material.set_shader_parameter("display_texture", delayed_texture)
+
+	func start() -> void:
+		capture()
+		render()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,40 +67,26 @@ func _ready() -> void:
 	$Area3D.body_entered.connect(_on_body_entered)
 	$Area3D.area_entered.connect(_on_area_entered)
 
-	# screen = get_node_or_null("../ControlCenter/Screen1") as MeshInstance3D
-	# if screen == null:
-	# 	push_warning("Ship screen mesh not found at ../ControlCenter/Screen1")
-	# 	return
-	
-	var shader = preload("res://Resources/screen_shader.gdshader")
-	screen_material = ShaderMaterial.new()
-	screen_material.shader = shader
-	screen_material.set_shader_parameter("display_texture", loading_viewport.get_texture())
-	
-	compass_material = ShaderMaterial.new()
-	compass_material.shader = shader
-	compass_material.set_shader_parameter("display_texture", compass_viewport.get_texture())
-	
-	ship_data_material = ShaderMaterial.new()
-	ship_data_material.shader = shader
-	ship_data_material.set_shader_parameter("display_texture", ship_data_viewport.get_texture())
-
-	#screen.set_surface_override_material(0, screen_material)
-
 	# randomly generate name of the form XX-000
+	ship_name = char(randi_range(65, 90)) + char(randi_range(65, 90)) + "-" + str(randi_range(0, 9)) + str(randi_range(0, 9)) + str(randi_range(0, 9))
+
 	ship_name = char(randi_range(65, 90)) + char(randi_range(65, 90)) + "-" + str(randi_range(0, 9)) + str(randi_range(0, 9)) + str(randi_range(0, 9))
 	ship_name_label.text = ship_name
 	ammo_name_label.text = str(ammo)
 	delay_name_label.text = str(delay)
+
+	screen_feed = screen.new($SubViewport, self, loading_viewport)
+	add_child(screen_feed)
+	screen_feed.start()
 	
-	capture(feed_buffer, $SubViewport)
-	render(feed_buffer, screen_material)
+	# compass_feed = screen.new(compass_viewport, self, loading_viewport)
+	# add_child(compass_feed)
+	# compass_feed.start()
+
+	ship_data_feed = screen.new(ship_data_viewport, self, loading_viewport)
+	add_child(ship_data_feed)
+	ship_data_feed.start()
 	
-	capture(compass_buffer, compass_viewport)
-	render(compass_buffer, compass_material)
-	
-	capture(ship_data_buffer, ship_data_viewport)
-	render(ship_data_buffer, ship_data_material)
 @onready var ship_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Label2
 @onready var ammo_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect2/MarginContainer/VBoxContainer/Label4
 @onready var delay_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/HBoxContainer/Label3
@@ -71,7 +98,6 @@ func _ready() -> void:
 @export var turn_amount_degrees := 45.0
 @export var turn_duration := 0.25
 
-var feed_buffer = []
 var compass_buffer = []
 var ship_data_buffer = []
 var turn_tween: Tween
@@ -88,7 +114,7 @@ func render(buffer: Array, material: ShaderMaterial) -> void:
 		if buffer == null or buffer.size() < delay * fps:
 			continue
 
-		if screen_material == null:
+		if material == null:
 			continue
 
 		if loading_viewport != null:
