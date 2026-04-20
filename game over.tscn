@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bbvi22apy5w6v"]
 
-[ext_resource type="Texture2D" uid="uid://c3tpbvo0vnbmf" path="res://Resources/titlecard2.png" id="1_6cxpi"]
 [ext_resource type="Script" uid="uid://cvqm3y2ieshpe" path="res://Scripts/game_over.gd" id="1_lfvhc"]
 [ext_resource type="Texture2D" uid="uid://bhh1xtvtwv6dy" path="res://Resources/star.png" id="2_5b4wn"]
+[ext_resource type="Texture2D" uid="uid://cvmy15xjtafm6" path="res://Resources/game over.png" id="2_lfvhc"]
 [ext_resource type="Texture2D" uid="uid://bw3nsp7v6cn0y" path="res://Resources/box2.png" id="2_v7q4x"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1972184326]
@@ -25,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_6cxpi")
+texture = ExtResource("2_lfvhc")
 expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=640818187]
