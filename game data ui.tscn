@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c5k2s7fyrx8ox"]
 
 [ext_resource type="Texture2D" uid="uid://b28pa33s45xj5" path="res://Resources/bg.png" id="1_57oua"]
+[ext_resource type="Texture2D" uid="uid://cnwdy8ea7014v" path="res://Resources/stopwatch.png" id="2_r36lw"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1303261204]
 
@@ -47,6 +48,8 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/icons" unique_id=714575637]
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("2_r36lw")
+expand_mode = 3
 
 [node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/icons" unique_id=505627760]
 layout_mode = 2
@@ -69,24 +72,28 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Time:"
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Control/MarginContainer/HBoxContainer/names" unique_id=318715551]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Live Ships:"
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Control/MarginContainer/HBoxContainer/names" unique_id=906128865]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Ships Delivered:"
+vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Control/MarginContainer/HBoxContainer/names" unique_id=550286709]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Ships Destroyed:"
+vertical_alignment = 1
 
 [node name="answers" type="VBoxContainer" parent="Control/MarginContainer/HBoxContainer" unique_id=1467854894]
 layout_mode = 2
