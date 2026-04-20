@@ -9,6 +9,7 @@ extends Node3D
 
 @onready var ship_screen = screen_2 # $"ControlCenter/Screen2"
 @onready var compass_screen = screen_3 # $"ControlCenter/Screen2"
+@onready var game_data_screen = screen_1
 
 @onready var all_screens = [screen_1, screen_2, screen_3]
 
@@ -47,6 +48,7 @@ func turn_selected_ship(direction: Vector3):
 func populate_screens(ship):
 	ship_screen.set_surface_override_material(0, ship.screen_feed.material)
 	compass_screen.set_surface_override_material(0, ship.ship_data_feed.material)
+	game_data_screen.set_surface_override_material(0, ship.game_data_feed.material)
 
 func _process(_delta: float) -> void:
 	# clean dead ships from the director's list first

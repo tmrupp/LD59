@@ -5,12 +5,14 @@ extends Node3D
 @onready var explosion_prefab = preload("res://Scenes/explosion.tscn")
 @onready var loading_viewport = $Loading
 @onready var ship_data_viewport = $ShipDataViewport
+@onready var game_data_viewport = $GameDataViewport
 
 var director : Node = null
 
 # var screen: MeshInstance3D
 var screen_feed
 var ship_data_feed
+var game_data_feed
 
 var ship_name : String
 var ammo = 3
@@ -68,8 +70,6 @@ func _ready() -> void:
 	ship_name = char(randi_range(65, 90)) + char(randi_range(65, 90)) + "-" + str(randi_range(0, 9)) + str(randi_range(0, 9)) + str(randi_range(0, 9))
 	
 	ship_name_label.text = ship_name
-	ammo_name_label.text = str(ammo)
-	delay_name_label.text = str(delay)
 
 	screen_feed = screen.new($SubViewport, self, loading_viewport)
 	add_child(screen_feed)
@@ -79,10 +79,19 @@ func _ready() -> void:
 	add_child(ship_data_feed)
 	ship_data_feed.start()
 	
+	game_data_feed = screen.new(game_data_viewport, self, loading_viewport)
+	add_child(game_data_feed)
+	game_data_feed.start()
+	
 @onready var ship_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Label2
 @onready var ammo_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer/TextureRect2/MarginContainer/VBoxContainer/Label4
 @onready var delay_name_label = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect/MarginContainer/HBoxContainer/Label3
 @onready var compass_rect = $ShipDataViewport/CanvasLayer/Control/MarginContainer/GridContainer/HBoxContainer/VBoxContainer2/TextureRect2/MarginContainer/VBoxContainer/TextureRect
+
+@onready var time_label = $GameDataViewport/CanvasLayer/Control/MarginContainer/HBoxContainer/answers/Label
+@onready var active_ships_label = $GameDataViewport/CanvasLayer/Control/MarginContainer/HBoxContainer/answers/Label2
+@onready var delivered_ships_label = $GameDataViewport/CanvasLayer/Control/MarginContainer/HBoxContainer/answers/Label3
+@onready var destroyed_ships_label =  $GameDataViewport/CanvasLayer/Control/MarginContainer/HBoxContainer/answers/Label4
 
 @export var delay = 2.0
 @export var fps = 15
@@ -139,6 +148,13 @@ func _on_area_entered(area: Area3D) -> void:
 
 func _process(delta: float) -> void:
 	position += -transform.basis.z * velocity * delta
+	ammo_name_label.text = str(ammo)
+	delay_name_label.text = str(delay)
+	
+	time_label.text = str(int(Time.get_ticks_msec()*.001), " secs")
+	active_ships_label.text = str($"..".ships.size())
+	#delivered_ships_label.text = 
+	#destroyed_ships_label.text = 
 
 func turn(v: Vector3):
 	if turn_tween != null and turn_tween.is_valid():
