@@ -4,14 +4,12 @@ extends Node3D
 @onready var loading_font = preload("res://Resources/Anta-Regular.ttf")
 @onready var explosion_prefab = preload("res://Scenes/explosion.tscn")
 @onready var loading_viewport = $Loading
-@onready var compass_viewport = $Compass
 @onready var ship_data_viewport = $ShipDataViewport
 
 var director : Node = null
 
 # var screen: MeshInstance3D
 var screen_feed
-var compass_feed
 var ship_data_feed
 
 var ship_name : String
@@ -61,7 +59,6 @@ class screen extends Node:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SubViewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-	compass_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	ship_data_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 
 	$Area3D.body_entered.connect(_on_body_entered)
@@ -69,15 +66,10 @@ func _ready() -> void:
 
 	# randomly generate name of the form XX-000
 	ship_name = char(randi_range(65, 90)) + char(randi_range(65, 90)) + "-" + str(randi_range(0, 9)) + str(randi_range(0, 9)) + str(randi_range(0, 9))
-
-	compass_feed = screen.new(compass_viewport, self, loading_viewport)
-	add_child(compass_feed)
-	compass_feed.start()
 	
 	ship_name_label.text = ship_name
 	ammo_name_label.text = str(ammo)
 	delay_name_label.text = str(delay)
-	# compass_rect.texture = compass_feed.material
 
 	screen_feed = screen.new($SubViewport, self, loading_viewport)
 	add_child(screen_feed)
@@ -99,8 +91,6 @@ func _ready() -> void:
 @export var turn_amount_degrees := 45.0
 @export var turn_duration := 0.25
 
-var compass_buffer = []
-var ship_data_buffer = []
 var turn_tween: Tween
 
 func capture(buffer: Array, viewport: SubViewport) -> void:
