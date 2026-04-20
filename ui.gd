@@ -8,6 +8,7 @@ extends CanvasLayer
 
 func toggle ():
 	start_resume_button.text = "Resume"
+	restart_button.show()
 
 	self.visible = not self.visible
 	print("hi")
@@ -17,7 +18,7 @@ func toggle ():
 		$"..".process_mode = Node.PROCESS_MODE_INHERIT
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and not $"../Director".game_over_ui.visible:
 		toggle()
 		
 func restart ():
@@ -31,7 +32,6 @@ func volume(_x=true):
 func game_end():
 	restart_button.show()
 	start_resume_button.hide()
-	toggle()
 
 func _ready() -> void:
 	start_resume_button.pressed.connect(toggle)

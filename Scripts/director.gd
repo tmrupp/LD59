@@ -5,6 +5,7 @@ extends Node3D
 @onready var ship_prefab = preload("res://Scenes/ship.tscn")
 
 @onready var ui = $"../title"
+@onready var game_over_ui = $"../GameOverUI"
 
 # ==== inspector exports/controls ====
 @export_group("Asteroids")
@@ -39,6 +40,7 @@ var destroyed_ships_to_cause_game_over = 5
 var asteroids : Array = []
 var ships : Array = []
 
+var overall_timer : float = 0
 var ship_spawn_timer : float
 
 var cached_ship_count : int = -1
@@ -51,6 +53,8 @@ func _ready() -> void:
 	spawn_ship()
 
 func _process(delta: float) -> void:
+	overall_timer += delta
+	
 	if not Engine.is_editor_hint():
 		ship_spawn_timer += delta
 
@@ -115,6 +119,11 @@ func report_destroyed_ships(amount : int):
 	
 	print("game over because ", amount, " ships were destroyed")
 	ui.game_end.call_deferred()
+	
+	game_over_ui.score_value_label.text = str(Ship.delivered_ships)
+	game_over_ui.time_value_label.text = str(int(overall_timer)) + " s"
+	game_over_ui.show.call_deferred()
+	(func(): $"..".process_mode = Node.PROCESS_MODE_DISABLED).call_deferred()
 
 func clear_asteroids():
 	print("Clearing asteroids")

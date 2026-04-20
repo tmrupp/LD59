@@ -1,3 +1,4 @@
+class_name Ship
 extends Node3D
 
 @onready var laser_scene = preload("res://Scenes/laser.tscn")
@@ -173,7 +174,7 @@ func _process(delta: float) -> void:
 	ammo_name_label.text = str(ammo)
 	delay_name_label.text = "%.2f" % delay
 	
-	time_label.text = str(int(Time.get_ticks_msec()*.001), " secs")
+	time_label.text = str(int($"..".overall_timer), " secs")
 	active_ships_label.text = str($"..".ships.size())
 	delivered_ships_label.text = str(delivered_ships)
 	destroyed_ships_label.text = str(destroyed_ships)
