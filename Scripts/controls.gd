@@ -38,6 +38,8 @@ func grid_button_pressed(idx: int):
 		5: turn_selected_ship(Vector3.LEFT)
 		7: turn_selected_ship(Vector3.DOWN)
 		4: shoot_selected_ship()
+	
+	SFXPlayer.get_instance().play_key_press()
 
 func shoot_selected_ship():
 	current_ship.shoot()
@@ -102,6 +104,8 @@ func change_ship_screen(forward : bool):
 			current_ship.tree_exiting.disconnect(_on_watched_ship_dying)
 		var next_index = (found_index + (1 if forward else -1)) % director.ships.size()
 		watch_ship(director.ships[next_index])
+	
+	SFXPlayer.get_instance().play_key_press()
 
 # used to connect the signal of left clicking on something to a specific action
 func left_click_connect(node : Node, callable : Callable):

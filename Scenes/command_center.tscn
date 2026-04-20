@@ -9,7 +9,11 @@
 [ext_resource type="Script" uid="uid://bimchi4sd05h6" path="res://Scripts/controls.gd" id="3_0rffn"]
 [ext_resource type="Material" uid="uid://crab0h8jo2vs3" path="res://Resources/refract.tres" id="4_a3bg2"]
 [ext_resource type="Script" uid="uid://k22dnw2707cg" path="res://Scripts/director.gd" id="4_dnagy"]
+[ext_resource type="Script" uid="uid://duig4h8oaq8b8" path="res://Scripts/sfx_player.gd" id="5_72d65"]
 [ext_resource type="Material" uid="uid://dmee5abgg5t5h" path="res://Resources/tv_static.tres" id="5_escgk"]
+[ext_resource type="AudioStream" uid="uid://cwnmewc1wx3p7" path="res://sounds/explosion.mp3" id="5_ftkmg"]
+[ext_resource type="AudioStream" uid="uid://ca5ey0waqvp6o" path="res://sounds/keypress.mp3" id="6_pclli"]
+[ext_resource type="AudioStream" uid="uid://cdv3debk4pr8g" path="res://sounds/keypress2.mp3" id="7_72d65"]
 [ext_resource type="PackedScene" uid="uid://bwe3sbg7uhsl3" path="res://3D Models/spacestation.glb" id="9_yrvai"]
 [ext_resource type="Material" uid="uid://bvraimd2v5yy" path="res://Resources/flashing_rectangle.tres" id="10_5ygjn"]
 
@@ -88,6 +92,23 @@ process_mode = 3
 stream = ExtResource("2_escgk")
 volume_db = -10.0
 autoplay = true
+
+[node name="SFXPlayer" type="Node" parent="." unique_id=779800978]
+script = ExtResource("5_72d65")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="SFXPlayer" unique_id=190714935]
+stream = ExtResource("5_ftkmg")
+max_polyphony = 3
+
+[node name="KeyPress1" type="AudioStreamPlayer" parent="SFXPlayer" unique_id=842251259]
+stream = ExtResource("6_pclli")
+volume_db = -10.0
+pitch_scale = 1.51
+max_polyphony = 3
+
+[node name="KeyPress2" type="AudioStreamPlayer" parent="SFXPlayer" unique_id=1498023736]
+stream = ExtResource("7_72d65")
+max_polyphony = 3
 
 [node name="Goal" type="Node3D" parent="." unique_id=990100341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 1.36)
