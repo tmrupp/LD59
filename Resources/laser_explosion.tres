@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://0u2m5aulk6d7"]
+
+[ext_resource type="Shader" uid="uid://nrn37ov38xgj" path="res://Resources/laser.gdshader" id="1_j53a3"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mtci6"]
+frequency = 0.0134
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_op43c"]
+noise = SubResource("FastNoiseLite_mtci6")
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_j53a3")
+shader_parameter/color_1 = Color(1, 0, 0, 1)
+shader_parameter/color_2 = Color(1, 1, 1, 1)
+shader_parameter/low_threshold = 0.35
+shader_parameter/high_threshold = 1.38
+shader_parameter/noise_multiplier = 0.695
+shader_parameter/noise_vertex_multiplier = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_op43c")

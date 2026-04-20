@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var explosion_prefab = preload("res://Scenes/explosion.tscn")
+@onready var explosion_prefab = preload("res://Scenes/laser_explosion.tscn")
 
 func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_SPACE):

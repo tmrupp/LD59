@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bfkl0weg0bpge"]
+
+[ext_resource type="Material" uid="uid://0u2m5aulk6d7" path="res://Resources/laser_explosion.tres" id="1_emhek"]
+[ext_resource type="Script" uid="uid://dfbh0tl4avtpb" path="res://Scripts/laser_explosion.gd" id="1_wb6rf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wb6rf"]
+resource_local_to_scene = true
+material = ExtResource("1_emhek")
+radial_segments = 128
+rings = 64
+
+[node name="LaserExplosion" type="Node3D" unique_id=536736559]
+script = ExtResource("1_wb6rf")
+
+[node name="Sphere" type="MeshInstance3D" parent="." unique_id=1337464105]
+mesh = SubResource("SphereMesh_wb6rf")

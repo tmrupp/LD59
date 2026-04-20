@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://wai8p3s2xtcd"]
 
-[ext_resource type="Shader" path="res://Resources/laser.gdshader" id="1_3656u"]
+[ext_resource type="Shader" uid="uid://nrn37ov38xgj" path="res://Resources/laser.gdshader" id="1_3656u"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3656u"]
 frequency = 0.0363
@@ -12,6 +12,8 @@ seamless = true
 [resource]
 render_priority = 0
 shader = ExtResource("1_3656u")
+shader_parameter/color_1 = Color(1, 0, 0, 1)
+shader_parameter/color_2 = Color(1, 1, 1, 1)
 shader_parameter/low_threshold = -0.555
 shader_parameter/high_threshold = 2.185
 shader_parameter/noise_multiplier = 0.94

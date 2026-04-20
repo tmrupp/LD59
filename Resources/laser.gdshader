@@ -1,6 +1,8 @@
 shader_type spatial;
 render_mode unshaded;
 
+uniform vec4 color_1 : source_color;
+uniform vec4 color_2 : source_color;
 uniform float low_threshold;
 uniform float high_threshold;
 uniform float noise_multiplier;
@@ -30,5 +32,10 @@ void fragment() {
 		val = 1.0;
 	}
 	
-	ALBEDO = mix(vec3(1.0, 0.0, 0.0), vec3(1.0, 1.0, 1.0), val);
+	vec4 mix_result = mix(color_1, color_2, val);
+	ALBEDO = mix_result.rgb;
+	
+	if (mix_result.a < 0.5) {
+		discard;
+	}
 }
