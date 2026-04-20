@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://k22dnw2707cg" path="res://Scripts/director.gd" id="4_dnagy"]
 [ext_resource type="Material" uid="uid://dmee5abgg5t5h" path="res://Resources/tv_static.tres" id="5_escgk"]
 [ext_resource type="PackedScene" uid="uid://d135y15e4cu5v" path="res://3D Models/spacestation.glb" id="9_yrvai"]
+[ext_resource type="Material" uid="uid://bvraimd2v5yy" path="res://Resources/flashing_rectangle.tres" id="10_5ygjn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h4dh8"]
 noise_type = 2
@@ -57,6 +58,9 @@ size = Vector3(0.19556762, 0.085, 0.19343995)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_escgk"]
 size = Vector3(0.32, 0.085, 0.17)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yrvai"]
+material = ExtResource("10_5ygjn")
 
 [node name="Node3D" type="Node3D" unique_id=1355801188]
 
@@ -174,6 +178,10 @@ ship_spawn_max = 3
 
 [node name="spacestation" parent="SpaceStation" unique_id=530198951 instance=ExtResource("9_yrvai")]
 transform = Transform3D(-19.335, 0, 1.6903193e-06, 0, 19.335, 0, -1.6903193e-06, 0, -19.335, 0, -8.72, 13.97)
+
+[node name="FlashingIndicator" type="MeshInstance3D" parent="SpaceStation" unique_id=911158054]
+transform = Transform3D(-30, 0, -1.509958e-06, 0, 10, 0, 4.529874e-06, 0, -10, 0, -4.331, -7.72)
+mesh = SubResource("QuadMesh_yrvai")
 
 [editable path="Controls/ControlCenter"]
 [editable path="Controls/ControlCenter2"]
