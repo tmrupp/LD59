@@ -157,6 +157,7 @@ func _on_body_entered(body: Node) -> void:
 		get_tree().root.add_child(new_explosion)
 		new_explosion.position = position
 		destroyed_ships += 1
+		$"..".report_destroyed_ships(destroyed_ships)
 		
 		queue_free()
 

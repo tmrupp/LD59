@@ -4,6 +4,8 @@ extends Node3D
 @onready var asteroid_prefab = preload("res://Scenes/asteroid.tscn")
 @onready var ship_prefab = preload("res://Scenes/ship.tscn")
 
+@onready var ui = $"../title"
+
 # ==== inspector exports/controls ====
 @export_group("Asteroids")
 @export var asteroid_count_desired : int = 50
@@ -31,6 +33,8 @@ var button_3 = spawn_ship
 var button_4 = clear_ships
 @export_group("")
 # ====================================
+
+var destroyed_ships_to_cause_game_over = 5
 
 var asteroids : Array = []
 var ships : Array = []
@@ -104,6 +108,13 @@ func spawn_ship():
 	new_ship.position = ship_spawn_center + Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)) * ship_spawn_extents / 2.0
 
 	new_ship.look_at(Vector3.ZERO)
+
+func report_destroyed_ships(amount : int):
+	if amount < destroyed_ships_to_cause_game_over:
+		return
+	
+	print("game over because ", amount, " ships were destroyed")
+	ui.game_end.call_deferred()
 
 func clear_asteroids():
 	print("Clearing asteroids")
