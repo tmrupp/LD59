@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://62buldcvlc2u" path="res://Scripts/ship.gd" id="1_l3rv8"]
 [ext_resource type="PackedScene" uid="uid://dkg0c5dgi60gu" path="res://3D Models/spaceship.glb" id="2_4qyt1"]
-[ext_resource type="Script" path="res://Scripts/Compass.gd" id="4_8aq7e"]
+[ext_resource type="Script" uid="uid://d3xki382y5cpq" path="res://Scripts/Compass.gd" id="4_8aq7e"]
 [ext_resource type="Texture2D" uid="uid://dod3tl7ph30ks" path="res://Resources/ship bg.png" id="4_cmder"]
 [ext_resource type="Texture2D" uid="uid://bw3nsp7v6cn0y" path="res://Resources/box2.png" id="5_fwcnm"]
 [ext_resource type="Texture2D" uid="uid://bgws2fw7hvt7r" path="res://Resources/arrows2.png" id="6_kxdp2"]
@@ -46,7 +46,7 @@ transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, 
 visible = false
 mesh = SubResource("SphereMesh_ugvm7")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=417491629]
+[node name="Area3D" type="Area3D" parent="." unique_id=417491629 groups=["obstacle"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1813683780]
 shape = SubResource("SphereShape3D_ugvm7")
