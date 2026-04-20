@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var velocity = 5
+@export var velocity = 10
 var origin
 
 func _ready() -> void:

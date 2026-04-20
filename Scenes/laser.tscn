@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://brfhm3qgl5pu1"]
 
 [ext_resource type="Script" uid="uid://bcypj81eiclcr" path="res://Scripts/laser.gd" id="1_xmihv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvnnc"]
-transparency = 1
-albedo_color = Color(1, 0, 0, 0.34509805)
+[ext_resource type="Material" uid="uid://wai8p3s2xtcd" path="res://Resources/laser.tres" id="2_mou6w"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_c4141"]
-material = SubResource("StandardMaterial3D_jvnnc")
+material = ExtResource("2_mou6w")
 radius = 0.1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ek7iq"]
