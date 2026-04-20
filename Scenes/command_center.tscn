@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://crab0h8jo2vs3" path="res://Resources/refract.tres" id="4_a3bg2"]
 [ext_resource type="Script" uid="uid://k22dnw2707cg" path="res://Scripts/director.gd" id="4_dnagy"]
 [ext_resource type="Material" uid="uid://dmee5abgg5t5h" path="res://Resources/tv_static.tres" id="5_escgk"]
+[ext_resource type="PackedScene" uid="uid://d135y15e4cu5v" path="res://3D Models/spacestation.glb" id="9_yrvai"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h4dh8"]
 noise_type = 2
@@ -38,10 +39,6 @@ sky = SubResource("Sky_t0o22")
 ambient_light_source = 2
 ambient_light_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
 tonemap_mode = 2
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_yl3n7"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_lv533"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rffn"]
 size = Vector3(0.32, 0.085, 0.17)
@@ -81,63 +78,51 @@ script = ExtResource("2_kesst")
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=602590092]
 transform = Transform3D(1, 0, 0, 0, 0.96814764, 0.25038, 0, -0.25038, 0.96814764, 0, 0, 0)
 
-[node name="Ground" type="MeshInstance3D" parent="." unique_id=2111875439]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 17.553)
-mesh = SubResource("PlaneMesh_yl3n7")
-
-[node name="Ceiling" type="MeshInstance3D" parent="." unique_id=892390823]
-transform = Transform3D(20, 0, 0, 0, -20, 1.7484556e-06, 0, -1.7484556e-06, -20, -0.00041675568, 4.5042963, 17.55093)
-mesh = SubResource("PlaneMesh_yl3n7")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1300415891]
-transform = Transform3D(19.85, 0, 0, 0, 2.08, 0, 0, 0, 1.395, 0, 0.773, -1.75)
-mesh = SubResource("BoxMesh_lv533")
-
 [node name="Controls" type="Node3D" parent="." unique_id=713809150]
 script = ExtResource("3_0rffn")
 
 [node name="ControlCenter" parent="Controls" unique_id=1921206753 instance=ExtResource("1_lv533")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Switching Ships Button" parent_id_path=PackedInt32Array(1921206753, 2090877811) index="0" unique_id=241122176]
+[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Switching Ships Button" parent_id_path=PackedInt32Array(1921206753, 1074808761) index="0" unique_id=241122176]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Switching Ships Button/StaticBody3D" unique_id=209581901]
 shape = SubResource("BoxShape3D_0rffn")
 
-[node name="Emergency Button Cover" parent="Controls/ControlCenter" index="8" unique_id=400182882]
+[node name="Emergency Button Cover" parent="Controls/ControlCenter" index="8" unique_id=1512720045]
 transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 0.5482091, 1.0628211, -0.036422424)
 surface_material_override/0 = ExtResource("4_a3bg2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_001" parent_id_path=PackedInt32Array(1921206753, 1338953654) index="0" unique_id=2115557537]
+[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_001" parent_id_path=PackedInt32Array(1921206753, 1236014276) index="0" unique_id=2115557537]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_001/StaticBody3D" unique_id=1740107841]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
 shape = SubResource("BoxShape3D_yrvai")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_003" parent_id_path=PackedInt32Array(1921206753, 556054151) index="0" unique_id=1045038324]
+[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_003" parent_id_path=PackedInt32Array(1921206753, 239951675) index="0" unique_id=1045038324]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_003/StaticBody3D" unique_id=244044792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
 shape = SubResource("BoxShape3D_5ygjn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_004" parent_id_path=PackedInt32Array(1921206753, 937803502) index="0" unique_id=312242669]
+[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_004" parent_id_path=PackedInt32Array(1921206753, 1404578840) index="0" unique_id=312242669]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_004/StaticBody3D" unique_id=569728171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
 shape = SubResource("BoxShape3D_5ygjn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_005" parent_id_path=PackedInt32Array(1921206753, 1830503838) index="0" unique_id=732727228]
+[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_005" parent_id_path=PackedInt32Array(1921206753, 1377013306) index="0" unique_id=732727228]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_005/StaticBody3D" unique_id=1560413658]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
 shape = SubResource("BoxShape3D_82014")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_007" parent_id_path=PackedInt32Array(1921206753, 1441045644) index="0" unique_id=1495993151]
+[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Buttons_007" parent_id_path=PackedInt32Array(1921206753, 1517371555) index="0" unique_id=1495993151]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Buttons_007/StaticBody3D" unique_id=1961399146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00010558963, 0, -0.0057775825)
 shape = SubResource("BoxShape3D_jruwr")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Switching Ships Button_001" parent_id_path=PackedInt32Array(1921206753, 1330952341) index="0" unique_id=786466515]
+[node name="StaticBody3D" type="StaticBody3D" parent="Controls/ControlCenter/Switching Ships Button_001" parent_id_path=PackedInt32Array(1921206753, 104237611) index="0" unique_id=786466515]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/ControlCenter/Switching Ships Button_001/StaticBody3D" unique_id=2009682567]
 shape = SubResource("BoxShape3D_escgk")
@@ -145,33 +130,33 @@ shape = SubResource("BoxShape3D_escgk")
 [node name="ControlCenter2" parent="Controls" unique_id=215741979 instance=ExtResource("1_lv533")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 0, 0)
 
-[node name="Screen1" parent="Controls/ControlCenter2" index="2" unique_id=1830470428]
+[node name="Screen1" parent="Controls/ControlCenter2" index="2" unique_id=2136837028]
 surface_material_override/0 = ExtResource("5_escgk")
 
-[node name="Emergency Button Cover" parent="Controls/ControlCenter2" index="8" unique_id=400182882]
+[node name="Emergency Button Cover" parent="Controls/ControlCenter2" index="8" unique_id=1512720045]
 transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 0.5482091, 1.0628211, -0.036422424)
 surface_material_override/0 = ExtResource("4_a3bg2")
 
-[node name="Screen2" parent="Controls/ControlCenter2" index="29" unique_id=1159217861]
+[node name="Screen2" parent="Controls/ControlCenter2" index="29" unique_id=1640956815]
 surface_material_override/0 = ExtResource("5_escgk")
 
-[node name="Screen3" parent="Controls/ControlCenter2" index="30" unique_id=1517298044]
+[node name="Screen3" parent="Controls/ControlCenter2" index="30" unique_id=1273426856]
 surface_material_override/0 = ExtResource("5_escgk")
 
 [node name="ControlCenter3" parent="Controls" unique_id=2005496438 instance=ExtResource("1_lv533")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1, 0, 0)
 
-[node name="Screen1" parent="Controls/ControlCenter3" index="2" unique_id=1830470428]
+[node name="Screen1" parent="Controls/ControlCenter3" index="2" unique_id=2136837028]
 surface_material_override/0 = ExtResource("5_escgk")
 
-[node name="Emergency Button Cover" parent="Controls/ControlCenter3" index="8" unique_id=400182882]
+[node name="Emergency Button Cover" parent="Controls/ControlCenter3" index="8" unique_id=1512720045]
 transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 0.5482091, 1.0628211, -0.036422424)
 surface_material_override/0 = ExtResource("4_a3bg2")
 
-[node name="Screen2" parent="Controls/ControlCenter3" index="29" unique_id=1159217861]
+[node name="Screen2" parent="Controls/ControlCenter3" index="29" unique_id=1640956815]
 surface_material_override/0 = ExtResource("5_escgk")
 
-[node name="Screen3" parent="Controls/ControlCenter3" index="30" unique_id=1517298044]
+[node name="Screen3" parent="Controls/ControlCenter3" index="30" unique_id=1273426856]
 surface_material_override/0 = ExtResource("5_escgk")
 
 [node name="Director" type="Node3D" parent="." unique_id=312234527]
@@ -184,6 +169,11 @@ ship_spawn_center = Vector3(0, 30, -130)
 ship_spawn_extents = Vector3(100, 20, 0)
 ship_spawn_cooldown = 10.0
 ship_spawn_max = 3
+
+[node name="SpaceStation" type="Node3D" parent="." unique_id=177971489]
+
+[node name="spacestation" parent="SpaceStation" unique_id=530198951 instance=ExtResource("9_yrvai")]
+transform = Transform3D(-19.335, 0, 1.6903193e-06, 0, 19.335, 0, -1.6903193e-06, 0, -19.335, 0, -8.72, 13.97)
 
 [editable path="Controls/ControlCenter"]
 [editable path="Controls/ControlCenter2"]
