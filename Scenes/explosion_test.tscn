@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blu1l5knbp3tt"]
 
-[ext_resource type="Script" uid="uid://chp1pcywk6mls" path="res://Scenes/explosion_test.gd" id="1_pgxji"]
+[ext_resource type="Script" uid="uid://chp1pcywk6mls" path="res://Scripts/explosion_test.gd" id="1_pgxji"]
 [ext_resource type="Shader" uid="uid://c44coabjath5c" path="res://Resources/space_sky.gdshader" id="2_4a6jk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4a6jk"]
