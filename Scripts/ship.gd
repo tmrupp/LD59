@@ -2,7 +2,10 @@ extends Node3D
 
 @onready var laser_scene = preload("res://Scenes/laser.tscn")
 @onready var loading_font = preload("res://Resources/Anta-Regular.ttf")
+@onready var explosion_prefab = preload("res://Scenes/explosion.tscn")
 @onready var loading_viewport = $Loading
+
+var director : Node = null
 
 # var screen: MeshInstance3D
 var screen_material: ShaderMaterial
@@ -89,6 +92,11 @@ func shoot():
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("obstacle"):
 		print("Collided with obstacle:", body.get_parent().name)
+
+		var new_explosion = explosion_prefab.instantiate()
+		get_tree().root.add_child(new_explosion)
+		new_explosion.position = position
+		
 		queue_free()
 
 func _on_area_entered(area: Area3D) -> void:

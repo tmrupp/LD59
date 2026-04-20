@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://blu1l5knbp3tt"]
+
+[ext_resource type="Script" uid="uid://chp1pcywk6mls" path="res://Scenes/explosion_test.gd" id="1_pgxji"]
+[ext_resource type="Shader" uid="uid://c44coabjath5c" path="res://Resources/space_sky.gdshader" id="2_4a6jk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4a6jk"]
+noise_type = 2
+frequency = 0.27
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5vvth"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_4a6jk")
+seamless = true
+invert = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpox5"]
+shader = ExtResource("2_4a6jk")
+shader_parameter/noise_weight = 0.735
+shader_parameter/noise_bias = 0.42
+shader_parameter/noise_frequency = 4.385
+shader_parameter/star_light_texture = SubResource("NoiseTexture2D_5vvth")
+shader_parameter/star_density = 16.0
+
+[sub_resource type="Sky" id="Sky_bllpa"]
+sky_material = SubResource("ShaderMaterial_mpox5")
+
+[sub_resource type="Environment" id="Environment_y4t3y"]
+background_mode = 2
+sky = SubResource("Sky_bllpa")
+ambient_light_source = 2
+ambient_light_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
+tonemap_mode = 2
+
+[node name="ExplosionTest" type="Node3D" unique_id=2015905685]
+script = ExtResource("1_pgxji")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1738916218]
+transform = Transform3D(0.34202015, -0.9396926, -4.1075268e-08, 0, -4.371139e-08, 1, -0.9396926, -0.34202015, -1.4950176e-08, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2136733403]
+environment = SubResource("Environment_y4t3y")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=844372233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)

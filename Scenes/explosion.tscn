@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cktpxjg7hfs6e"]
+
+[ext_resource type="Script" uid="uid://bj8g2uj4vh5lk" path="res://Scripts/explosion.gd" id="1_aayv4"]
+[ext_resource type="Gradient" uid="uid://cjhbd2f5r6ab1" path="res://Resources/explosion_gradient.tres" id="2_4okmj"]
+[ext_resource type="Material" uid="uid://drskjniylqen0" path="res://Resources/explosion.tres" id="2_a801j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nlb0y"]
+resource_local_to_scene = true
+material = ExtResource("2_a801j")
+radial_segments = 128
+rings = 64
+
+[node name="Explosion" type="Node3D" unique_id=850792209]
+script = ExtResource("1_aayv4")
+color_gradient = ExtResource("2_4okmj")
+
+[node name="Sphere" type="MeshInstance3D" parent="." unique_id=2011956796]
+mesh = SubResource("SphereMesh_nlb0y")

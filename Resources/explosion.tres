@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://drskjniylqen0"]
+
+[ext_resource type="Shader" uid="uid://dc7d826nmry5v" path="res://Resources/explosion.gdshader" id="1_l34at"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_l34at")
+shader_parameter/noise_weight = 3.44
+shader_parameter/noise_bias = 0.155
+shader_parameter/noise_frequency = 7.105
+shader_parameter/vertex_adjust = 0.0
+shader_parameter/color_at_0 = Color(0, 0, 0, 1)
+shader_parameter/color_at_1 = Color(1, 1, 1, 1)
