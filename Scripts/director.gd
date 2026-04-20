@@ -62,12 +62,9 @@ func _process(delta: float) -> void:
 			
 			
 func get_next_valid_ship():
-	for ship in ships:
-		if not is_instance_valid(ship):
-			ships.erase(ship)
-		else:
-			return ship
-			
+	ships = ships.filter(func(s): return is_instance_valid(s))
+	if ships.size() > 0:
+		return ships[0]
 	return null
 
 func init_asteroids():
