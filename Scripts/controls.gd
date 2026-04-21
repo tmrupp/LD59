@@ -56,6 +56,7 @@ func watch_ship(ship):
 	current_ship = ship
 	currently_watching = true
 	ship_screen.set_surface_override_material(0, tv_static_material)
+	compass_screen.set_surface_override_material(0, tv_static_material)
 	ship.tree_exiting.connect(_on_watched_ship_dying, CONNECT_ONE_SHOT)
 	get_tree().create_timer(0.1).timeout.connect(func():
 		if is_instance_valid(ship):
