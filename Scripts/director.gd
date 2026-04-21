@@ -46,6 +46,10 @@ var ship_spawn_timer : float
 var cached_ship_count : int = -1
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	Ship.destroyed_ships = 0
+	Ship.delivered_ships = 0
+	
 	if not Engine.is_editor_hint():
 		init_asteroids()
 		ship_spawn_timer = 0.0
@@ -124,6 +128,11 @@ func report_destroyed_ships(amount : int):
 	game_over_ui.time_value_label.text = str(int(overall_timer))
 	game_over_ui.show.call_deferred()
 	(func(): $"..".process_mode = Node.PROCESS_MODE_DISABLED).call_deferred()
+
+func report_delivered_ships(amount : int):
+	if amount % 2 == 0:
+		ship_spawn_max += 1
+	print("max ships is now ", ship_spawn_max)
 
 func clear_asteroids():
 	print("Clearing asteroids")

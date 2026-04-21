@@ -166,6 +166,7 @@ func _on_area_entered(area: Area3D) -> void:
 	if area.is_in_group("goal"):
 		print("Reached goal area:", area.get_parent().name)
 		delivered_ships += 1
+		$"..".report_delivered_ships(delivered_ships)
 		queue_free()
 
 
